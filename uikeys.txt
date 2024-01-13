@@ -1,0 +1,275 @@
+
+unbindall          // clear the defaults
+unbind enter chat  // clear the defaults
+
+fakemeta  space
+
+// Drag scroll
+bind Any+o mouse2
+
+// Esc clears everything
+bind                esc  select AllMap++_ClearSelection_SelectNum_0+
+bind                esc  quitmessage
+bind          Shift+esc  quitmenu
+bind     Ctrl+Shift+esc  quitforce
+bind      Alt+Shift+esc  reloadforce
+bind         Any+escape  edit_escape
+bind          Any+pause  pause
+bind                esc  teamstatus_close
+bind                esc  customgameinfo_close
+bind                esc  buildmenu_pregame_deselect
+
+// TODO selectbox_idle is interesting
+
+// bind           Any+sc_z  selectbox_same
+bind          Any+space  selectbox_idle
+bind          Any+shift  selectbox_all
+// bind           Any+ctrl  selectbox_deselect
+// bind            Any+alt  selectbox_mobile
+// bind          Any+space  selectloop
+// bind           Any+ctrl  selectloop_invert
+// bind          Any+shift  selectloop_add
+
+bind          Any+space  commandinsert prepend_between
+bind          Any+enter  chat
+// bind      Alt+ctrl+sc_a  chatswitchally
+// bind      Alt+ctrl+sc_s  chatswitchspec
+bind            Any+tab  edit_complete
+bind      Any+backspace  edit_backspace
+bind         Any+delete  edit_delete
+bind           Any+home  edit_home
+bind           Alt+left  edit_home
+bind            Any+end  edit_end
+bind          Alt+right  edit_end
+bind             Any+up  edit_prev_line
+bind           Any+down  edit_next_line
+bind           Any+left  edit_prev_char
+bind          Any+right  edit_next_char
+bind          Ctrl+left  edit_prev_word
+bind         Ctrl+right  edit_next_word
+bind          Any+enter  edit_return
+// bind             Ctrl+v  pastetext
+// bind             Any+up  moveforward
+// bind           Any+down  moveback
+// bind          Any+right  moveright
+// bind           Any+left  moveleft
+// bind         Any+pageup  moveup
+// bind       Any+pagedown  movedown
+// bind            Any+alt  movereset
+// bind            Any+alt  moverotate
+bind           Any+e  movetilt
+keyload uikeys_build.txt
+// bind               sc_.  gridmenu_cycle_builder
+// bind                  1  specteam 0
+// bind                  2  specteam 1
+// bind                  3  specteam 2
+// bind                  4  specteam 3
+// bind                  5  specteam 4
+// bind                  6  specteam 5
+// bind                  7  specteam 6
+// bind                  8  specteam 7
+// bind                  9  specteam 8
+
+// SPECIAL SELECT
+bind		Shift+9			select		AllMap+_Builder_Not_Building+_SelectClosestToCursor+
+bind		9			    select		AllMap+_Builder_Not_Building+_ClearSelection_SelectClosestToCursor+
+
+// CONTROL GROUPS
+bind              Alt+7  add_to_autogroup 0
+bind              Alt+j  add_to_autogroup 1
+bind              Alt+h  add_to_autogroup 2
+bind              Alt+g  add_to_autogroup 3
+bind              Alt+n  add_to_autogroup 4
+bind              Alt+b  add_to_autogroup 5
+bind              Alt+k  add_to_autogroup 6
+bind              Alt+i  add_to_autogroup 7
+bind              Alt+8  add_to_autogroup 8
+// bind              Alt+9  add_to_autogroup 9
+bind                  7  group 0
+bind                  j  group 1
+bind                  h  group 2
+bind                  g  group 3
+bind                  n  group 4
+bind                  b  group 5
+bind                  k  group 6
+bind                  i  group 7
+bind                  8  group 8
+// bind                  9  group 9
+bind       Shift+7  group add 0
+bind       Shift+j  group add 1
+bind       Shift+h  group add 2
+bind       Shift+g  group add 3
+bind       Shift+n  group add 4
+bind       Shift+b  group add 5
+bind       Shift+k  group add 6
+bind       Shift+i  group add 7
+bind       Shift+8  group add 8
+// bind       Shift+9  group add 9
+
+// bind             Ctrl+0  group set 0
+// bind             Ctrl+1  group set 1
+// bind             Ctrl+2  group set 2
+// bind             Ctrl+3  group set 3
+// bind             Ctrl+4  group set 4
+// bind             Ctrl+5  group set 5
+// bind             Ctrl+6  group set 6
+// bind             Ctrl+7  group set 7
+// bind             Ctrl+8  group set 8
+// bind             Ctrl+9  group set 9
+// bind            Shift+0  group selectadd 0
+// bind            Shift+1  group selectadd 1
+// bind            Shift+2  group selectadd 2
+// bind            Shift+3  group selectadd 3
+// bind            Shift+4  group selectadd 4
+// bind            Shift+5  group selectadd 5
+// bind            Shift+6  group selectadd 6
+// bind            Shift+7  group selectadd 7
+// bind            Shift+8  group selectadd 8
+// bind            Shift+9  group selectadd 9
+// bind         Ctrl+Alt+0  group selecttoggle 0
+// bind         Ctrl+Alt+1  group selecttoggle 1
+// bind         Ctrl+Alt+2  group selecttoggle 2
+// bind         Ctrl+Alt+3  group selecttoggle 3
+// bind         Ctrl+Alt+4  group selecttoggle 4
+// bind         Ctrl+Alt+5  group selecttoggle 5
+// bind         Ctrl+Alt+6  group selecttoggle 6
+// bind         Ctrl+Alt+7  group selecttoggle 7
+// bind         Ctrl+Alt+8  group selecttoggle 8
+// bind         Ctrl+Alt+9  group selecttoggle 9
+// bind           Alt+sc_=  increasespeed
+// bind           Alt+sc_-  decreasespeed
+// bind        Alt+numpad+  increasespeed
+// bind        Alt+numpad-  decreasespeed
+// bind               sc_[  buildfacing inc
+// bind         Shift+sc_[  buildfacing inc
+// bind               sc_]  buildfacing dec
+// bind         Shift+sc_]  buildfacing dec
+bind           Shift+f  buildfacing dec
+bind           Alt+f  buildfacing dec
+bind     Shift+Alt+f  buildfacing dec
+bind           v  buildspacing inc
+bind     Shift+Alt+v  buildspacing inc
+bind           c  buildspacing dec
+bind     Shift+Alt+c  buildspacing dec
+// bind               \  attack
+// bind         Shift+\  attack
+// bind          Ctrl+\  areaattack
+// bind    Ctrl+Shift+\  areaattack
+bind          Ctrl+-  selfd
+bind    Ctrl+Shift+-  selfd queued
+bind               -  manualfire
+bind         Shift+-  manualfire
+bind               -  manuallaunch
+bind         Shift+-  manuallaunch
+bind               [  reclaim
+bind         Shift+[  reclaim
+bind               9  fight
+bind         Shift+9  fight
+// bind           Alt+sc_f  forcestart
+bind               u  stopproduction
+bind         Shift+u  stopproduction
+bind               u  stop
+bind         Shift+y  command_skip_current
+bind     Alt+Shift+y  command_skip_current
+bind         Shift+u  command_cancel_last
+bind     Alt+Shift+u  command_cancel_last
+bind               \  patrol
+bind         Shift+\  patrol
+bind               t  unit_stats
+bind          Ctrl+t  customgameinfo
+// bind               sc_j  loadunits
+// bind         Shift+sc_j  loadunits
+bind               =  cloak
+bind         Shift+=  cloak
+bind               =  wantcloak
+bind           Shift+=  wantcloak
+// bind               sc_m  restore
+// bind         Shift+sc_m  restore
+// bind               sc_o  guard
+// bind         Shift+sc_o  guard
+bind               0  gatherwait
+bind         Shift+0  gatherwait
+bind               ;  repair
+bind         Shift+;  repair
+bind               '  settarget
+bind          Ctrl+'  canceltarget
+// bind               sc_u  unloadunits
+// bind         Shift+sc_u  unloadunits
+bind               Ctrl+[  resurrect
+bind         Shift+Ctrl+[  resurrect
+// bind               sc_w  capture
+// bind         Shift+sc_w  capture
+// bind               sc_y  wait
+// bind         Shift+sc_y  wait queued
+// bind          sc_b,sc_b  onoff 0
+// bind               sc_b  onoff 1
+// bind Shift+sc_b,Shift+sc_b  onoff 0
+// bind         Shift+sc_b  onoff 1
+// bind     sc_l,sc_l,sc_l  firestate 1
+bind          Ctrl+l  firestate 0
+bind               Alt+l firestate 2
+// bind Shift+sc_l,Shift+sc_l,Shift+sc_l  firestate 1
+// bind Shift+sc_l,Shift+sc_l  firestate 0
+// bind         Shift+sc_l  firestate 2
+// bind     sc_;,sc_;,sc_;  movestate 1
+// bind          sc_;,sc_;  movestate 0
+// bind               sc_;  movestate 2
+// bind Shift+sc_;,Shift+sc_;,Shift+sc_;  movestate 1
+// bind Shift+sc_;,Shift+sc_;  movestate 0
+// bind         Shift+sc_;  movestate 2
+bind          Ctrl+i,Ctrl+i  repeat 0
+bind               Ctrl+i  repeat 1
+// bind Shift+sc_t,Shift+sc_t  repeat 0
+// bind         Shift+sc_t  repeat 1
+// bind           Any+sc_'  togglelos
+bind          p  toggleoverview
+// bind           Alt+sc_o  cameraflip
+bind            Ctrl+f5  viewta
+bind            Ctrl+f6  viewspring
+// bind            Ctrl+f7  HideInterface
+bind             Any+F8  LastMsgPos
+bind                Any+f6  ShowPathTraversability
+bind                Any+f7  ShowMetalMap
+bind                Any+f5  ShowElevation
+// bind                f10  options
+// bind                f11  luaui selector
+// bind            Any+f12  screenshot png
+// bind      Alt+backspace  fullscreen
+// bind          Ctrl+sc_`  group unset
+bind           Alt+6  remove_from_autogroup
+bind                f9  drawlabel
+bind                f10  drawinmap
+// bind          Ctrl+sc_e  select AllMap++_ClearSelection_SelectAll+
+
+// Select next idle builder
+bind           Ctrl+l  sbelect AllMap+_Builder_Idle+_ClearSelection_SelectOne+
+
+// Select com
+bind                l  select AllMap+_ManualFireUnit_Not_IdMatches_cordecom_Not_IdMatches_armdecom_Not_IdMatches_armthor+_ClearSelection_SelectOne+
+bind                Shift+l  select AllMap+_ManualFireUnit_Not_IdMatches_cordecom_Not_IdMatches_armdecom_Not_IdMatches_armthor+_SelectAll+
+
+// bind               sc_q  select Visible+_InPrevSel+_ClearSelection_SelectAll+
+// bind          Ctrl+sc_q  select PrevSelection++_ClearSelection_SelectPart_50+
+// bind          Ctrl+sc_w  select AllMap+_InPrevSel+_ClearSelection_SelectAll+
+// bind          Ctrl+sc_r  select AllMap+_Transport_Idle+_ClearSelection_SelectAll+
+// bind          Ctrl+sc_y  select Visible+_Waiting+_ClearSelection_SelectAll+
+// bind            numpad2  moveback
+// bind            numpad6  moveright
+// bind            numpad4  moveleft
+// bind            numpad8  moveforward
+// bind            numpad9  moveup
+// bind            numpad3  movedown
+// bind            numpad1  movefast
+// bind          backspace  MuteSound
+// bind            numpad+  snd_volume_increase
+// bind               sc_=  snd_volume_increase
+// bind               sc_-  snd_volume_decrease
+// bind            numpad-  snd_volume_decrease
+// bind            Ctrl+0  set_camera_anchor 1
+// bind            Ctrl+9  set_camera_anchor 2
+// bind            Ctrl+F3  set_camera_anchor 3
+// bind            Ctrl+F4  set_camera_anchor 4
+// bind                 0  focus_camera_anchor 1
+// bind                 9  focus_camera_anchor 2
+// bind                 F3  focus_camera_anchor 3
+// bind                 F4  focus_camera_anchor 4
