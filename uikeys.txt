@@ -7,6 +7,9 @@ fakemeta  space
 // Drag scroll
 bind Any+o mouse2
 
+bind         Ctrl+, select  AllMap+_Builder_Not_Building_Buildoptions_Not_InHotkeyGroup+_ClearSelection_SelectClosestToCursor+
+bind         Ctrl+. select  AllMap+_Builder_Not_Building_InGroup_9+_ClearSelection_SelectClosestToCursor+
+
 // Esc clears everything
 bind                esc  select AllMap++_ClearSelection_SelectNum_0+
 bind                esc  quitmessage
@@ -24,7 +27,7 @@ bind                esc  buildmenu_pregame_deselect
 // bind           Any+sc_z  selectbox_same
 bind          Any+space  selectbox_idle
 bind          Any+shift  selectbox_all
-// bind           Any+ctrl  selectbox_deselect
+bind           Any+ctrl  selectbox_deselect
 // bind            Any+alt  selectbox_mobile
 // bind          Any+space  selectloop
 // bind           Any+ctrl  selectloop_invert
@@ -58,6 +61,11 @@ bind          Any+enter  edit_return
 // bind            Any+alt  movereset
 // bind            Any+alt  moverotate
 bind           Any+e  movetilt
+
+bind               /  attack
+bind         Shift+/  attack
+bind          Ctrl+/  areaattack
+bind    Ctrl+Shift+/  areaattack
 keyload uikeys_build.txt
 // bind               sc_.  gridmenu_cycle_builder
 // bind                  1  specteam 0
@@ -70,40 +78,38 @@ keyload uikeys_build.txt
 // bind                  8  specteam 7
 // bind                  9  specteam 8
 
-// SPECIAL SELECT
-bind		Shift+9			select		AllMap+_Builder_Not_Building+_SelectClosestToCursor+
-bind		9			    select		AllMap+_Builder_Not_Building+_ClearSelection_SelectClosestToCursor+
-
 // CONTROL GROUPS
-bind              Alt+7  add_to_autogroup 0
-bind              Alt+j  add_to_autogroup 1
-bind              Alt+h  add_to_autogroup 2
-bind              Alt+g  add_to_autogroup 3
-bind              Alt+n  add_to_autogroup 4
-bind              Alt+b  add_to_autogroup 5
-bind              Alt+k  add_to_autogroup 6
-bind              Alt+i  add_to_autogroup 7
-bind              Alt+8  add_to_autogroup 8
+bind              Shift+Ctrl+q  remove_from_autogroup
+bind              Shift+Ctrl+`  add_to_autogroup 0
+bind              Shift+Ctrl+1  add_to_autogroup 1
+bind              Shift+Ctrl+2  add_to_autogroup 2
+bind              Shift+Ctrl+3  add_to_autogroup 3
+bind              Shift+Ctrl+4  add_to_autogroup 4
+bind              Shift+Ctrl+5  add_to_autogroup 5
+bind              Shift+Ctrl+F1  add_to_autogroup 6
+bind              Shift+Ctrl+F2  add_to_autogroup 7
+bind              Shift+Ctrl+F3  add_to_autogroup 8
+bind              Shift+Ctrl+F4  add_to_autogroup 9
 // bind              Alt+9  add_to_autogroup 9
-bind                  7  group 0
-bind                  j  group 1
-bind                  h  group 2
-bind                  g  group 3
-bind                  n  group 4
-bind                  b  group 5
-bind                  k  group 6
-bind                  i  group 7
-bind                  8  group 8
+// bind                  7  group 0
+// bind                  j  group 1
+// bind                  h  group 2
+// bind                  g  group 3
+// bind                  n  group 4
+// bind                  b  group 5
+// bind                  k  group 6
+// bind                  i  group 7
+// bind                  8  group 8
 // bind                  9  group 9
-bind       Shift+7  group add 0
-bind       Shift+j  group add 1
-bind       Shift+h  group add 2
-bind       Shift+g  group add 3
-bind       Shift+n  group add 4
-bind       Shift+b  group add 5
-bind       Shift+k  group add 6
-bind       Shift+i  group add 7
-bind       Shift+8  group add 8
+// bind       Shift+7  group add 0
+// bind       Shift+j  group add 1
+// bind       Shift+h  group add 2
+// bind       Shift+g  group add 3
+// bind       Shift+n  group add 4
+// bind       Shift+b  group add 5
+// bind       Shift+k  group add 6
+// bind       Shift+i  group add 7
+// bind       Shift+8  group add 8
 // bind       Shift+9  group add 9
 
 // bind             Ctrl+0  group set 0
@@ -155,31 +161,44 @@ bind     Shift+Alt+c  buildspacing dec
 // bind         Shift+\  attack
 // bind          Ctrl+\  areaattack
 // bind    Ctrl+Shift+\  areaattack
+// TODO: factories can't selfd but nobody cares maybe?
+bind           Alt+-  selfd
 bind          Ctrl+-  selfd
 bind    Ctrl+Shift+-  selfd queued
+bind    Alt+Shift+-  selfd queued
 bind               -  manualfire
 bind         Shift+-  manualfire
 bind               -  manuallaunch
 bind         Shift+-  manuallaunch
 bind               [  reclaim
 bind         Shift+[  reclaim
-bind               9  fight
-bind         Shift+9  fight
+bind               u  fight
+bind         Shift+u  fight
+bind         Ctrl+u   fight
+bind         Ctrl+Shift+u  fight
+bind         Alt+p  guard
+bind         Shift+p  guard
+bind     Shift+Alt+p  guard
 // bind           Alt+sc_f  forcestart
-bind               u  stopproduction
-bind         Shift+u  stopproduction
-bind               u  stop
-bind         Shift+y  command_skip_current
-bind     Alt+Shift+y  command_skip_current
-bind         Shift+u  command_cancel_last
-bind     Alt+Shift+u  command_cancel_last
+bind               0,0  stopproduction
+bind         Alt+0,Alt+0  stopproduction
+bind               0  factory_clear_queue
+bind               Alt+0  factory_clear_queue
+bind               0  stop
+bind          Ctrl+0  stop
+bind         Shift+8  command_skip_current
+bind     Alt+Shift+8  command_skip_current
+bind         Shift+0  command_cancel_last
+bind     Alt+Shift+0  command_cancel_last
+bind           Alt+8,Alt+8  repeat 0
+bind           Alt+8  repeat 1
 bind               \  patrol
 bind         Shift+\  patrol
 bind               t  unit_stats
 bind          Ctrl+t  customgameinfo
 // bind               sc_j  loadunits
 // bind         Shift+sc_j  loadunits
-bind               =  cloak
+bind               =  cloak 0
 bind         Shift+=  cloak
 bind               =  wantcloak
 bind           Shift+=  wantcloak
@@ -187,12 +206,14 @@ bind           Shift+=  wantcloak
 // bind         Shift+sc_m  restore
 // bind               sc_o  guard
 // bind         Shift+sc_o  guard
-bind               0  gatherwait
-bind         Shift+0  gatherwait
+// bind               ]  gatherwait
+// bind         Shift+]  gatherwait
 bind               ;  repair
 bind         Shift+;  repair
 bind               '  settarget
 bind          Ctrl+'  canceltarget
+bind     Alt+',Alt+'  firestate 2
+bind           Alt+'  firestate 0
 // bind               sc_u  unloadunits
 // bind         Shift+sc_u  unloadunits
 bind               Ctrl+[  resurrect
@@ -206,8 +227,8 @@ bind         Shift+Ctrl+[  resurrect
 // bind Shift+sc_b,Shift+sc_b  onoff 0
 // bind         Shift+sc_b  onoff 1
 // bind     sc_l,sc_l,sc_l  firestate 1
-bind          Ctrl+l  firestate 0
-bind               Alt+l firestate 2
+// bind          Ctrl+l     firestate 0
+// bind               Alt+l firestate 2
 // bind Shift+sc_l,Shift+sc_l,Shift+sc_l  firestate 1
 // bind Shift+sc_l,Shift+sc_l  firestate 0
 // bind         Shift+sc_l  firestate 2
@@ -217,12 +238,16 @@ bind               Alt+l firestate 2
 // bind Shift+sc_;,Shift+sc_;,Shift+sc_;  movestate 1
 // bind Shift+sc_;,Shift+sc_;  movestate 0
 // bind         Shift+sc_;  movestate 2
-bind          Ctrl+i,Ctrl+i  repeat 0
-bind               Ctrl+i  repeat 1
+// bind          Ctrl+i,Ctrl+i  repeat 0
+// bind               Ctrl+i  repeat 1
 // bind Shift+sc_t,Shift+sc_t  repeat 0
 // bind         Shift+sc_t  repeat 1
 // bind           Any+sc_'  togglelos
+bind 2 save_cam_dist
+
 bind          p  toggleoverview
+bind      ctrl+p toggleoverview
+bind Alt+Shift+F8   set_cam_dist
 // bind           Alt+sc_o  cameraflip
 bind            Ctrl+f5  viewta
 bind            Ctrl+f6  viewspring
@@ -236,32 +261,112 @@ bind                Any+f5  ShowElevation
 // bind            Any+f12  screenshot png
 // bind      Alt+backspace  fullscreen
 // bind          Ctrl+sc_`  group unset
-bind           Alt+6  remove_from_autogroup
 bind                f9  drawlabel
 bind                f10  drawinmap
 // bind          Ctrl+sc_e  select AllMap++_ClearSelection_SelectAll+
 
-// Select next idle builder
-bind           Ctrl+l  sbelect AllMap+_Builder_Idle+_ClearSelection_SelectOne+
+// SPECIAL SELECTS
+
+bind 3 action1
+bind 3 action2
+
+// Select all builders
+// bind        l,l               select      FromMouseC_450+_Builder_Not_Building_Not_IdMatches_armnanotc_Not_IdMatches_cornanotc+_ClearSelection_SelectOne+
+bind        l               select      FromMouseC_600+_Builder_Not_Building_Buildoptions_Not_IdMatches_armmlv+_ClearSelection_SelectAll+
+bind        Shift+l         select      FromMouseC_600+_Builder_Not_Building_Buildoptions_Not_IdMatches_armmlv+_SelectAll+
+
+// Select closest specific builders t1 or t2 - double to center camera on one
+bind         Alt+l,Alt+l select  PrevSelection+_InPrevSel+_SelectOne+
+bind         Alt+l select  AllMap+_Builder_Not_Building_Buildoptions_Not_InHotkeyGroup+_ClearSelection_SelectClosestToCursor+
+bind         Ctrl+l,Ctrl+l select  PrevSelection+_InPrevSel+_SelectOne+
+bind         Ctrl+l select  AllMap+_Builder_Not_Building_InGroup_9+_ClearSelection_SelectClosestToCursor+
+
+// Select a closest hotkey 8
+bind      Ctrl+i,Ctrl+i select  PrevSelection+_InPrevSel+_SelectOne+
+bind             Ctrl+i select AllMap+_InGroup_8_Buildoptions_Not_ManualFireUnit+_ClearSelection_SelectClosestToCursor
+bind       Ctrl+Shift+i select AllMap+_InGroup_8_Buildoptions_Not_ManualFireUnit+_SelectClosestToCursor
 
 // Select com
-bind                l  select AllMap+_ManualFireUnit_Not_IdMatches_cordecom_Not_IdMatches_armdecom_Not_IdMatches_armthor+_ClearSelection_SelectOne+
-bind                Shift+l  select AllMap+_ManualFireUnit_Not_IdMatches_cordecom_Not_IdMatches_armdecom_Not_IdMatches_armthor+_SelectAll+
+bind         Alt+i,Alt+i select  PrevSelection+_InPrevSel+_SelectOne+
+bind            Alt+i select AllMap+_ManualFireUnit_Builder_Not_IdMatches_cordecom_Not_IdMatches_armdecom+_ClearSelection_SelectClosestToCursor+
+bind      Shift+Alt+i select AllMap+_ManualFireUnit_Builder_Not_IdMatches_cordecom_Not_IdMatches_armdecom+_SelectClosestToCursor+
 
-// bind               sc_q  select Visible+_InPrevSel+_ClearSelection_SelectAll+
-// bind          Ctrl+sc_q  select PrevSelection++_ClearSelection_SelectPart_50+
-// bind          Ctrl+sc_w  select AllMap+_InPrevSel+_ClearSelection_SelectAll+
-// bind          Ctrl+sc_r  select AllMap+_Transport_Idle+_ClearSelection_SelectAll+
-// bind          Ctrl+sc_y  select Visible+_Waiting+_ClearSelection_SelectAll+
-// bind            numpad2  moveback
-// bind            numpad6  moveright
-// bind            numpad4  moveleft
-// bind            numpad8  moveforward
-// bind            numpad9  moveup
-// bind            numpad3  movedown
-// bind            numpad1  movefast
-// bind          backspace  MuteSound
-// bind            numpad+  snd_volume_increase
+// Select repair units
+bind             i select FromMouseC_1100+_InGroup_8+_ClearSelection_SelectAll
+bind       Shift+i select FromMouseC_1100+_InGroup_8+_SelectAll
+
+// Groups
+bind             n select FromMouseC_1100+_InGroup_0+_ClearSelection_SelectAll+
+bind             j select FromMouseC_1100+_InGroup_1+_ClearSelection_SelectAll+
+bind             k select FromMouseC_1100+_InGroup_2+_ClearSelection_SelectAll+
+bind             9 select FromMouseC_1100+_InGroup_3+_ClearSelection_SelectAll+
+bind             h select FromMouseC_1100+_InGroup_4+_ClearSelection_SelectAll+
+bind             g select FromMouseC_1100+_InGroup_5+_ClearSelection_SelectAll+
+bind             b select FromMouseC_1100+_InGroup_7+_ClearSelection_SelectAll+
+
+// Groups
+bind        Ctrl+n select FromMouseC_1100+_InGroup_0+_ClearSelection_SelectAll+
+bind        Ctrl+j select FromMouseC_1100+_InGroup_1+_ClearSelection_SelectAll+
+bind        Ctrl+k select FromMouseC_1100+_InGroup_2+_ClearSelection_SelectAll+
+bind        Ctrl+9 select FromMouseC_1100+_InGroup_3+_ClearSelection_SelectAll+
+bind        Ctrl+h select FromMouseC_1100+_InGroup_4+_ClearSelection_SelectAll+
+bind        Ctrl+g select FromMouseC_1100+_InGroup_5+_ClearSelection_SelectAll+
+bind        Ctrl+b select FromMouseC_1100+_InGroup_7+_ClearSelection_SelectAll+
+
+bind       Shift+n select FromMouseC_1100+_InGroup_0+_SelectAll+
+bind       Shift+j select FromMouseC_1100+_InGroup_1+_SelectAll+
+bind       Shift+k select FromMouseC_1100+_InGroup_2+_SelectAll+
+bind       Shift+9 select FromMouseC_1100+_InGroup_3+_SelectAll+
+bind       Shift+h select FromMouseC_1100+_InGroup_4+_SelectAll+
+bind       Shift+g select FromMouseC_1100+_InGroup_5+_SelectAll+
+bind       Shift+b select FromMouseC_1100+_InGroup_7+_SelectAll+
+
+bind         Alt+n select AllMap+_InGroup_0+_ClearSelection_SelectAll+
+bind         Alt+j select AllMap+_InGroup_1+_ClearSelection_SelectAll+
+bind         Alt+k select AllMap+_InGroup_2+_ClearSelection_SelectAll+
+bind         Alt+9 select AllMap+_InGroup_3+_ClearSelection_SelectAll+
+bind         Alt+h select AllMap+_InGroup_4+_ClearSelection_SelectAll+
+bind         Alt+g select AllMap+_InGroup_5+_ClearSelection_SelectAll+
+bind         Alt+b select AllMap+_InGroup_7+_ClearSelection_SelectAll+
+
+bind   Shift+Alt+n select AllMap+_InGroup_0+_SelectAll+
+bind   Shift+Alt+j select AllMap+_InGroup_1+_SelectAll+
+bind   Shift+Alt+k select AllMap+_InGroup_2+_SelectAll+
+bind   Shift+Alt+9 select AllMap+_InGroup_3+_SelectAll+
+bind   Shift+Alt+h select AllMap+_InGroup_4+_SelectAll+
+bind   Shift+Alt+g select AllMap+_InGroup_5+_SelectAll+
+bind   Shift+Alt+b select AllMap+_InGroup_7+_SelectAll+
+
+// Select factories
+bind           8,8 select PrevSelection+_InPrevSel+_SelectOne+
+bind             8 select AllMap+_Builder_Building+_ClearSelection_SelectClosestToCursor+
+bind        Ctrl+8 select AllMap+_Builder_Building+_ClearSelection_SelectAll+
+
+// Select idle worker
+bind        Ctrl+7 select AllMap+_Builder_Not_Building_Idle+_ClearSelection_SelectOne+
+
+// Center on selection
+bind             4 select  PrevSelection+_InPrevSel+_SelectOne+
+
+
+// TODO: REMOVE THIS
+// FOR TESTING
+bind 3 my_action
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // bind               sc_=  snd_volume_increase
 // bind               sc_-  snd_volume_decrease
 // bind            numpad-  snd_volume_decrease
