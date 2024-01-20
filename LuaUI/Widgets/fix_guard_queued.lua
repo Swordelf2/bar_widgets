@@ -1,7 +1,11 @@
+-- Speedups
+local spGiveOrderToUnit = Spring.GiveOrderToUnit
+local spGetCommandQueue = Spring.GetCommandQueue
+
 function widget:GetInfo()
     return {
         name = "Fix Guard Queued",
-        desc = "Fixes Double Guard canceling",
+        desc = "Fixes Double Guard canceling - remove Guard when guard is used",
         author = "Swordelf",
         version = "v0.1",
         date = "Jan 14, 2024",
@@ -21,11 +25,12 @@ function widget:CommandNotify(cmdID, cmdParams, cmdOpts)
         return false
     end
     for _, unitID in ipairs(selectedUnits) do
-        local cmds = Spring.GetCommandQueue(unitID, -1)
+        local cmds = spGetCommandQueue(unitID, -1)
         if cmds then
             for k, unitCMD in ipairs(cmds) do
-                if unitCMD.id == cmdID and unitCMD.params[0] == cmdParams[0] then
-                    Spring.GiveOrderToUnit(unitID, CMD.REMOVE, {unitCMD.tag}, {})
+                if unitCMD.id == CMD.GUARD then
+                    -- Spring.Echo(cmdParams)
+                    spGiveOrderToUnit(unitID, CMD.REMOVE, {unitCMD.tag}, {})
                 end
             end
         end
