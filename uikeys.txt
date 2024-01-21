@@ -218,8 +218,8 @@ bind     Alt+',Alt+'  firestate 2
 bind           Alt+'  firestate 0
 // bind               sc_u  unloadunits
 // bind         Shift+sc_u  unloadunits
-bind               Ctrl+[  resurrect
-bind         Shift+Ctrl+[  resurrect
+bind               Alt+[  resurrect
+bind         Shift+Alt+[  resurrect
 // bind               sc_w  capture
 // bind         Shift+sc_w  capture
 // bind               sc_y  wait
@@ -275,47 +275,47 @@ bind        Shift+u         select      FromMouseC_600+_Builder_Not_Building_Bui
 // Select closest specific builders t1 or t2 - double to center camera on one
 bind         Alt+l,Alt+l select  PrevSelection+_InPrevSel+_SelectOne+
 bind         Alt+l select  AllMap+_Builder_Not_Building_Buildoptions_Not_InHotkeyGroup+_ClearSelection_SelectClosestToCursor+
-bind         Ctrl+l,Ctrl+l select  PrevSelection+_InPrevSel+_SelectOne+
-bind         Ctrl+l select  AllMap+_Builder_Not_Building_InGroup_9+_ClearSelection_SelectClosestToCursor+
+bind         Alt+k,Alt+k select  PrevSelection+_InPrevSel+_SelectOne+
+bind         Alt+k select  AllMap+_Builder_Not_Building_InGroup_9+_ClearSelection_SelectClosestToCursor+
 
 // Select a closest combat builder
-bind      Ctrl+i,Ctrl+i select  PrevSelection+_InPrevSel+_SelectOne+
-bind             Ctrl+i select AllMap+_InGroup_8_Buildoptions_Not_ManualFireUnit+_ClearSelection_SelectClosestToCursor
-bind       Ctrl+Shift+i select AllMap+_InGroup_8_Buildoptions_Not_ManualFireUnit+_SelectClosestToCursor
+bind      Alt+j,Alt+j select  PrevSelection+_InPrevSel+_SelectOne+
+bind            Alt+j select AllMap+_InGroup_8_Buildoptions_Not_ManualFireUnit+_ClearSelection_SelectClosestToCursor
+bind      Shift+Alt+j select AllMap+_InGroup_8_Buildoptions_Not_ManualFireUnit+_SelectClosestToCursor
 
 // Select com
-bind         Alt+i,Alt+i select  PrevSelection+_InPrevSel+_SelectOne+
-bind            Alt+i select AllMap+_ManualFireUnit_Builder_Not_IdMatches_cordecom_Not_IdMatches_armdecom+_ClearSelection_SelectClosestToCursor+
-bind      Shift+Alt+i select AllMap+_ManualFireUnit_Builder_Not_IdMatches_cordecom_Not_IdMatches_armdecom+_SelectClosestToCursor+
+bind              i,i select  PrevSelection+_InPrevSel+_SelectOne+
+bind              i select AllMap+_ManualFireUnit_Builder_Not_IdMatches_cordecom_Not_IdMatches_armdecom+_ClearSelection_SelectClosestToCursor+
 
-// Select repair units
-bind             i select FromMouseC_1100+_InGroup_8+_ClearSelection_SelectAll
+// Select repair units (add)
 bind       Shift+i select FromMouseC_1100+_InGroup_8+_SelectAll
 
 // Groups
-bind             n select FromMouseC_1100+_InGroup_0+_ClearSelection_SelectAll+
-bind             j select FromMouseC_1100+_InGroup_1+_ClearSelection_SelectAll+
+bind             n select FromMouseC_600+_InGroup_0+_ClearSelection_SelectAll+
+bind             l select FromMouseC_1100+_InGroup_1+_ClearSelection_SelectAll+
 bind             k select FromMouseC_1100+_InGroup_2+_ClearSelection_SelectAll+
-bind             9 select FromMouseC_1100+_InGroup_3+_ClearSelection_SelectAll+
-bind             h select FromMouseC_1100+_InGroup_4+_ClearSelection_SelectAll+
-bind             g select FromMouseC_1100+_InGroup_5+_ClearSelection_SelectAll+
+bind             j select FromMouseC_1100+_InGroup_3+_ClearSelection_SelectAll+
+bind             9 select FromMouseC_1100+_InGroup_4+_ClearSelection_SelectAll+
+bind             h select FromMouseC_1100+_InGroup_5+_ClearSelection_SelectAll+
+bind             g select FromMouseC_1100+_InGroup_6+_ClearSelection_SelectAll+
 bind             b select FromMouseC_1100+_InGroup_7+_ClearSelection_SelectAll+
 
-// Groups
-bind        Ctrl+n select FromMouseC_1100+_InGroup_0+_ClearSelection_SelectAll+
-bind        Ctrl+j select FromMouseC_1100+_InGroup_1+_ClearSelection_SelectAll+
+bind        Ctrl+n select FromMouseC_600+_InGroup_0+_ClearSelection_SelectAll+
+bind        Ctrl+l select FromMouseC_1100+_InGroup_1+_ClearSelection_SelectAll+
 bind        Ctrl+k select FromMouseC_1100+_InGroup_2+_ClearSelection_SelectAll+
-bind        Ctrl+9 select FromMouseC_1100+_InGroup_3+_ClearSelection_SelectAll+
-bind        Ctrl+h select FromMouseC_1100+_InGroup_4+_ClearSelection_SelectAll+
-bind        Ctrl+g select FromMouseC_1100+_InGroup_5+_ClearSelection_SelectAll+
+bind        Ctrl+j select FromMouseC_1100+_InGroup_3+_ClearSelection_SelectAll+
+bind        Ctrl+9 select FromMouseC_1100+_InGroup_4+_ClearSelection_SelectAll+
+bind        Ctrl+h select FromMouseC_1100+_InGroup_5+_ClearSelection_SelectAll+
+bind        Ctrl+g select FromMouseC_1100+_InGroup_6+_ClearSelection_SelectAll+
 bind        Ctrl+b select FromMouseC_1100+_InGroup_7+_ClearSelection_SelectAll+
 
-bind       Shift+n select FromMouseC_1100+_InGroup_0+_SelectAll+
-bind       Shift+j select FromMouseC_1100+_InGroup_1+_SelectAll+
+bind       Shift+n select FromMouseC_600+_InGroup_0+_SelectAll+
+bind       Shift+l select FromMouseC_1100+_InGroup_1+_SelectAll+
 bind       Shift+k select FromMouseC_1100+_InGroup_2+_SelectAll+
-bind       Shift+9 select FromMouseC_1100+_InGroup_3+_SelectAll+
-bind       Shift+h select FromMouseC_1100+_InGroup_4+_SelectAll+
-bind       Shift+g select FromMouseC_1100+_InGroup_5+_SelectAll+
+bind       Shift+j select FromMouseC_1100+_InGroup_3+_SelectAll+
+bind       Shift+9 select FromMouseC_1100+_InGroup_4+_SelectAll+
+bind       Shift+h select FromMouseC_1100+_InGroup_5+_SelectAll+
+bind       Shift+g select FromMouseC_1100+_InGroup_6+_SelectAll+
 bind       Shift+b select FromMouseC_1100+_InGroup_7+_SelectAll+
 
 // TODO: Alt+<group> are already used for selecting builders
@@ -327,16 +327,17 @@ bind       Shift+b select FromMouseC_1100+_InGroup_7+_SelectAll+
 // bind         Alt+g select AllMap+_InGroup_5+_ClearSelection_SelectAll+
 // bind         Alt+b select AllMap+_InGroup_7+_ClearSelection_SelectAll+
 
-bind   Shift+Alt+n select AllMap+_InGroup_0+_ClearSelection_SelectAll+
-bind   Shift+Alt+j select AllMap+_InGroup_1+_ClearSelection_SelectAll+
-bind   Shift+Alt+k select AllMap+_InGroup_2+_ClearSelection_SelectAll+
-bind   Shift+Alt+9 select AllMap+_InGroup_3+_ClearSelection_SelectAll+
-bind   Shift+Alt+h select AllMap+_InGroup_4+_ClearSelection_SelectAll+
-bind   Shift+Alt+g select AllMap+_InGroup_5+_ClearSelection_SelectAll+
-bind   Shift+Alt+b select AllMap+_InGroup_7+_ClearSelection_SelectAll+
+// bind   Shift+Alt+n select AllMap+_InGroup_0+_ClearSelection_SelectAll+
+// bind   Shift+Alt+j select AllMap+_InGroup_1+_ClearSelection_SelectAll+
+// bind   Shift+Alt+k select AllMap+_InGroup_2+_ClearSelection_SelectAll+
+// bind   Shift+Alt+9 select AllMap+_InGroup_3+_ClearSelection_SelectAll+
+// bind   Shift+Alt+h select AllMap+_InGroup_4+_ClearSelection_SelectAll+
+// bind   Shift+Alt+g select AllMap+_InGroup_5+_ClearSelection_SelectAll+
+// bind   Shift+Alt+b select AllMap+_InGroup_7+_ClearSelection_SelectAll+
 
 // Select factories
 bind           8,8 select PrevSelection+_InPrevSel+_SelectOne+
+// bind             8 select AllMap+_Builder_Building+_ClearSelection_SelectClosestToCursor+
 bind             8 select AllMap+_Builder_Building+_ClearSelection_SelectClosestToCursor+
 bind        Ctrl+8 select AllMap+_Builder_Building+_ClearSelection_SelectAll+
 
@@ -345,11 +346,6 @@ bind        Ctrl+7 select AllMap+_Builder_Not_Building_Idle+_ClearSelection_Sele
 
 // Center on selection
 bind             4 select  PrevSelection+_InPrevSel+_SelectOne+
-
-
-// TODO: REMOVE THIS
-// FOR TESTING
-bind 3 my_action
 
 
 
