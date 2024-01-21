@@ -1,0 +1,68 @@
+# INSTALL GUIDE
+
+* Disable widget "Default Group Recall Fix"
+
+# Groups
+
+0 - scouts 
+1 - micro units (janus etc)
+2 - front units and raiders? (med tanks, blitzes)
+3 - skirmishers (long range, slower)
+4 - artillery (very slow)
+5 - special (spybots, gremlins etc.)
+6 - (g key, not sure yet)
+7 - minelayers and shit
+8 - units that can repair on the battlefield - consuls, rez bots and shit
+9 - t2 cons
+
+# Keys
+
+9 - artillery
+/ - attack
+
+8 - select all factories
+
+janus, L
+whistler, J
+shellshocker, 9
+stout, - K
+blitz - K
+
+L - micro
+J - skirmisher
+K - front and raider
+9 - arty
+
+I - com
+I+Shift - repairers/reclaimers
+U+Shift - Add BP to selection
+
+P+Shift - Guard AND Guard last builder
+
+L+Alt - t1 con
+K+Alt - t2 con
+J+Alt - consul and shit
+
+
+
+
+
+## Later
+
+# TODO
+Assign control groups
+Cancel/Skip all orders except current one
+Remove delay on skip_last_command
+Test everything in multiplyaer game vs AI
+Free  up `M` in build keys (as we never need to press it)
+
+
+
+# Ideas for later
+Watch teddy's or pro_randy's replays
+
+Shift+X - clear selection on press, add to selection on repeat ("r")
+Use gatherwait (only before a fight command)
+So go back with Ctrl, then queue up gatherwait then queue up Fight command forward
+
+WTF is range display of corconfig
