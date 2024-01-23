@@ -275,7 +275,7 @@ bind         Alt+l select  AllMap+_Builder_Not_Building_Buildoptions_Not_InHotke
 bind         Alt+k,Alt+k select  PrevSelection+_InPrevSel+_SelectOne+
 bind         Alt+k select  AllMap+_Builder_Not_Building_InGroup_9+_ClearSelection_SelectClosestToCursor+
 
-// Select a closest combat builder
+// Select closest combat builder
 bind      Alt+;,Alt+; select  PrevSelection+_InPrevSel+_SelectOne+
 bind            Alt+; select AllMap+_InGroup_8_Buildoptions_Not_ManualFireUnit+_ClearSelection_SelectClosestToCursor
 bind      Shift+Alt+; select AllMap+_InGroup_8_Buildoptions_Not_ManualFireUnit+_SelectClosestToCursor

@@ -51,13 +51,14 @@ J+Alt - consul and shit
 ## Later
 
 # TODO
-Manually issuing guard on non-factory removes all guard commands
 Proper guard on cons
-Alt + build unit puts factory on repeat
 Cancel/Skip all orders except current one
+Shift+u - guard
+Double tap to also cancel queued commands
+
+Probably build into grid menu Alt + build unit puts factory on repeat
 Remove delay on skip_last_command
 Test everything in multiplyaer game vs AI
-Free  up `M` in build keys (as we never need to press it)
 
 
 
@@ -67,5 +68,7 @@ Watch teddy's or pro_randy's replays
 Shift+X - clear selection on press, add to selection on repeat ("r")
 Use gatherwait (only before a fight command)
 So go back with Ctrl, then queue up gatherwait then queue up Fight command forward
+
+Free  up `M` in build keys (as we never need to press it)
 
 WTF is range display of corconfig
