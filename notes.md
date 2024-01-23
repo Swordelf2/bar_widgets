@@ -1,6 +1,7 @@
 # INSTALL GUIDE
 
 * Disable widget "Default Group Recall Fix"
+* Disable "Guard Remove"
 
 # Groups
 
@@ -50,7 +51,9 @@ J+Alt - consul and shit
 ## Later
 
 # TODO
-Assign control groups
+Manually issuing guard on non-factory removes all guard commands
+Proper guard on cons
+Alt + build unit puts factory on repeat
 Cancel/Skip all orders except current one
 Remove delay on skip_last_command
 Test everything in multiplyaer game vs AI
