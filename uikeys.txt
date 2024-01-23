@@ -176,8 +176,6 @@ bind               ;  fight
 bind         Shift+;  fight
 bind          Ctrl+;  fight
 bind    Ctrl+Shift+u  fight
-// TODO: remove `guard` - replace with guard_last_con
-bind         Alt+p  guard
 bind         Shift+p  guard_last_builder
 bind         Shift+p  guard
 bind     Shift+Alt+p  guard
@@ -245,7 +243,6 @@ bind         Shift+Alt+[  resurrect
 // bind Shift+sc_t,Shift+sc_t  repeat 0
 // bind         Shift+sc_t  repeat 1
 // bind           Any+sc_'  togglelos
-bind Alt+Shift+y save_cam_dist
 
 bind          p   set_cam_dist
 bind          p  toggleoverview
@@ -352,6 +349,11 @@ bind             4 select  PrevSelection+_InPrevSel+_SelectOne+
 
 
 
+
+// Camera hotkeys
+bind    Alt+Shift+6 save_cam_dist
+bind    Alt+Shift+y set_camera_anchor 1
+bind          Alt+p focus_camera_anchor 1
 
 
 

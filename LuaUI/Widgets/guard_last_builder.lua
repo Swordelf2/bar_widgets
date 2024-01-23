@@ -1,3 +1,5 @@
+local util = VFS.Include("luaui/widgets/mod/util.lua")
+
 local cActionName = "guard_last_builder"
 local cCmdOpts = {"shift"}
 
@@ -37,15 +39,6 @@ function widget:SelectionChanged(selectedUnits)
     lastBuilder = unitID
 end
 
-local function removeGuardCommands(unitID)
-    local cmds = spGetCommandQueue(unitID, -1)
-    for k, unitCMD in ipairs(cmds) do
-        if unitCMD.id == CMD.GUARD then
-            spGiveOrderToUnit(unitID, CMD.REMOVE, {unitCMD.tag}, {})
-        end
-    end
-end
-
 local function action()
     if lastBuilder == nil then
         return
@@ -59,7 +52,9 @@ local function action()
     units = {}
     for _, unitID in ipairs(oldUnits) do
         if unitID ~= lastBuilder then
-            removeGuardCommands(unitID)
+            util.RemoveCommand(unitID, function(cmd)
+                return cmd.id == CMD.GUARD
+            end)
             table.insert(units, unitID)
         end
     end
