@@ -51,6 +51,7 @@ J+Alt - consul and shit
 ## Later
 
 # TODO
+Play with Toggle Overview on Release P
 Proper guard on cons
 Cancel/Skip all orders except current one
 Shift+u - guard
@@ -63,6 +64,24 @@ Test everything in multiplyaer game vs AI
 
 
 # Ideas for later
+Евгений Папазьян, [1/24/2024 5:44 PM]
+Practice wind farms
+
+Евгений Папазьян, [1/24/2024 5:44 PM]
+And bota
+
+Евгений Папазьян, [1/24/2024 5:44 PM]
+And E storage!!!!
+
+Double tap to also cancel queued commands
+Last builder - set only when given an order
+Issuing a non-shift command sets Repeat Off (TO NON FACTORIES).
+Also cancelling all commands and Stop sets Repeat to off
+Rebind Repeat to Shift+X as it's easier when issuing orders with Shift (maybe shift+-)
+
+Create a panic button - Wait all builders and factories
+Create a STRONGER panic button - Also wait all energy consuming fighting units
+
 Watch teddy's or pro_randy's replays
 
 Shift+X - clear selection on press, add to selection on repeat ("r")

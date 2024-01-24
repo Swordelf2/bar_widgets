@@ -175,10 +175,9 @@ bind         Shift+]  reclaim
 bind               ;  fight
 bind         Shift+;  fight
 bind          Ctrl+;  fight
-bind    Ctrl+Shift+u  fight
-bind         Shift+p  guard_last_builder
-bind         Shift+p  guard
-bind     Shift+Alt+p  guard
+bind     Shift+u,Shift+u builder_clear_queue
+bind         Shift+u  guard_last_builder
+bind         Shift+u  guard
 // bind           Alt+sc_f  forcestart
 bind               0,0  stopproduction
 bind         Alt+0,Alt+0  stopproduction
@@ -198,7 +197,7 @@ bind               t  unit_stats
 bind          Ctrl+t  customgameinfo
 // bind               sc_j  loadunits
 // bind         Shift+sc_j  loadunits
-bind               =  cloak 0
+bind               =  cloak
 bind         Shift+=  cloak
 bind               =  wantcloak
 bind           Shift+=  wantcloak
@@ -267,7 +266,7 @@ bind                f10  drawinmap
 // SPECIAL SELECTS
 
 // Select nearby BP (add)
-bind        Shift+u         select      FromMouseC_600+_Builder_Not_Building_Buildoptions_Not_IdMatches_armmlv+_SelectAll+
+bind        Shift+p         select      FromMouseC_600+_Builder_Not_Building_Buildoptions_Not_IdMatches_armmlv+_SelectAll+
 
 // Select closest specific builders t1 or t2 - double to center camera on one
 bind         Alt+l,Alt+l select  PrevSelection+_InPrevSel+_SelectOne+
