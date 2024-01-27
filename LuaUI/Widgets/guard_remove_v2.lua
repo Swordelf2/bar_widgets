@@ -1,7 +1,7 @@
 local util = VFS.Include("luaui/widgets/mod/util.lua")
 
 -- Speedups
-local spGetSelectedUnits = Spring.GetSelectedUnits
+local spGetSelectedUnitsSorted = Spring.GetSelectedUnitsSorted
 local spGetUnitDefID = Spring.GetUnitDefID
 
 local isFactory = {}
@@ -35,14 +35,27 @@ function widget:CommandNotify(cmdID, cmdParams, cmdOpts)
     if not cmdHasShift(cmdOpts) then
         return false
     end
-    local selectedUnits = spGetSelectedUnits()
+    local selectedUnits = spGetSelectedUnitsSorted()
     if selectedUnits == nil then
         return false
     end
-    for _, unitID in ipairs(selectedUnits) do
-        util.RemoveCommand(unitID, function(cmd)
-            return cmd.id == CMD.GUARD
-        end)
+    for unitDefID, unitIDs in pairs(selectedUnits) do
+        -- Don't remove guard for factories
+        if not isFactory[unitDefID] then
+            for _, unitID in ipairs(unitIDs) do
+                util.RemoveCommand(unitID, function(cmd)
+                    return cmd.id == CMD.GUARD
+                end)
+            end
+        end
     end
     return false
+end
+
+function widget:Initialize()
+    for unitDefID, unitDef in pairs(UnitDefs) do
+        if unitDef.isFactory and #unitDef.buildOptions > 0 then
+            isFactory[unitDefID] = true
+        end
+    end
 end

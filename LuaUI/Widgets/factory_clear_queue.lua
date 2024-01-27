@@ -1,4 +1,3 @@
-local cActionName = "factory_clear_queue"
 -- If true, the action additionally sets selected factories to Repeat Off.
 local setRepeatOff = true
 
@@ -20,7 +19,7 @@ function widget:GetInfo()
     }
 end
 
-local function action()
+local function factoryClearQueueAction()
     -- Find all currently selected factories
     local selectedUnits = Spring.GetSelectedUnitsSorted()
     for unitDefID, unitIDs in pairs(selectedUnits) do
@@ -69,5 +68,5 @@ function widget:Initialize()
         end
     end
 
-    widgetHandler:AddAction(cActionName, action, nil, "p")
+    widgetHandler:AddAction("factory_clear_queue", factoryClearQueueAction, nil, "p")
 end

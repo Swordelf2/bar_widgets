@@ -51,12 +51,10 @@ J+Alt - consul and shit
 ## Later
 
 # TODO
-Use `isFactory` and stuff from configs
-IMPROTANT: fix factory canceling rally on Shift+UNIT
-Proper guard on cons
+Select factories better
+
 Cancel/Skip all orders except current one
 Double tap to also cancel queued commands
-Select factories better
 
 Probably build into grid menu Alt + build unit puts factory on repeat
 Remove delay on skip_last_command
@@ -65,16 +63,6 @@ Test everything in multiplyaer game vs AI
 
 
 # Ideas for later
-Евгений Папазьян, [1/24/2024 5:44 PM]
-Practice wind farms
-
-Евгений Папазьян, [1/24/2024 5:44 PM]
-And bota
-
-Евгений Папазьян, [1/24/2024 5:44 PM]
-And E storage!!!!
-
-Play with Toggle Overview on Release P
 
 Double tap to also cancel queued commands
 Last builder - set only when given an order
@@ -94,3 +82,12 @@ So go back with Ctrl, then queue up gatherwait then queue up Fight command forwa
 Free  up `M` in build keys (as we never need to press it)
 
 WTF is range display of corconfig
+
+Евгений Папазьян, [1/24/2024 5:44 PM]
+Practice wind farms
+
+Евгений Папазьян, [1/24/2024 5:44 PM]
+And bota
+
+Евгений Папазьян, [1/24/2024 5:44 PM]
+And E storage!!!!
