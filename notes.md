@@ -51,11 +51,12 @@ J+Alt - consul and shit
 ## Later
 
 # TODO
-Play with Toggle Overview on Release P
+Use `isFactory` and stuff from configs
+IMPROTANT: fix factory canceling rally on Shift+UNIT
 Proper guard on cons
 Cancel/Skip all orders except current one
-Shift+u - guard
 Double tap to also cancel queued commands
+Select factories better
 
 Probably build into grid menu Alt + build unit puts factory on repeat
 Remove delay on skip_last_command
@@ -72,6 +73,8 @@ And bota
 
 Евгений Папазьян, [1/24/2024 5:44 PM]
 And E storage!!!!
+
+Play with Toggle Overview on Release P
 
 Double tap to also cancel queued commands
 Last builder - set only when given an order

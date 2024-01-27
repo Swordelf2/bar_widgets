@@ -19,7 +19,22 @@ function widget:GetInfo()
     }
 end
 
+local function cmdHasShift(cmdOpts)
+    if cmdOpts.shift then
+        return true
+    end
+    for _, cmdOpt in ipairs(cmdOpts) do
+        if cmdOpt == "shift" then
+            return true
+        end
+    end
+    return false
+end
+
 function widget:CommandNotify(cmdID, cmdParams, cmdOpts)
+    if not cmdHasShift(cmdOpts) then
+        return false
+    end
     local selectedUnits = spGetSelectedUnits()
     if selectedUnits == nil then
         return false
