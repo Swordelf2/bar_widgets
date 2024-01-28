@@ -51,7 +51,8 @@ J+Alt - consul and shit
 ## Later
 
 # TODO
-Select factories better
+Alt-P to always center on cam even from overview
+
 Skip all commands except current one
 
 Cancel/Skip all orders except current one

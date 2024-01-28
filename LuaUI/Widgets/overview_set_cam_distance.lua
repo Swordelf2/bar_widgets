@@ -3,6 +3,8 @@ local cConfigFile = "LuaUI/config/cam_dist_config.lua"
 
 local camDistFromGround = 100 -- some default
 
+local spGetCameraState = Spring.GetCameraState
+
 function widget:GetInfo()
     return {
         name = "Overview Camera Set Fixed distance",
@@ -15,7 +17,7 @@ function widget:GetInfo()
     }
 end
 
-local framesPassed = -1
+local framesPassed = nil
 
 -- LOCAL STUFF
 local function readConfig()
@@ -37,28 +39,31 @@ end
 -- LOCAL STUFF END
 
 local function setCamDistAction()
+    if spGetCameraState().name ~= "ov" then
+        return
+    end
     framesPassed = 0
 end
 
 local function setCameraDistance()
-    local camState = Spring.GetCameraState()
+    local camState = spGetCameraState()
     camState.dist = camDistFromGround
     Spring.SetCameraState(camState, 1)
 end
 
 function widget:Update()
-    if framesPassed == -1 then
+    if framesPassed == nil then
         return
     end
     framesPassed = framesPassed + 1
     if framesPassed >= cFramesToWait then
-        framesPassed = -1
+        framesPassed = nil
         setCameraDistance()
     end
 end
 
 local function saveCamDistAction()
-    local camState = Spring.GetCameraState()
+    local camState = spGetCameraState()
     if camState.name ~= "spring" then
         Spring.Log("some_section", LOG.WARNING, "Not in Spring camera")
         return
@@ -69,10 +74,21 @@ local function saveCamDistAction()
     })
 end
 
+local function toggleAndFocusCamAction(_, _, args, _, _)
+    if spGetCameraState().name == "ov" then
+        Spring.SendCommands({"toggleoverview"})
+    end
+    Spring.Echo(args)
+    if #args ~= 1 then
+        return
+    end
+end
+
 function widget:Initialize()
+    camDistFromGround = readConfig().dist or camDistFromGround
     widgetHandler:AddAction("set_cam_dist", setCamDistAction, nil, "p")
     widgetHandler:AddAction("save_cam_dist", saveCamDistAction, nil, "p")
-    camDistFromGround = readConfig().dist or camDistFromGround
+    widgetHandler:AddAction("toggle_and_focus_cam", toggleAndFocusCamAction, nil, "p")
 end
 
 -- -- works only with single key binds
