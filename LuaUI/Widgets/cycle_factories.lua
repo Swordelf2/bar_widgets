@@ -1,9 +1,13 @@
-local factoryToPriority
+local util = VFS.Include("luaui/widgets/mod/util.lua")
+
+local cCmdGuardOpts = {"shift"}
 
 local spGetSelectedUnitsSorted = Spring.GetSelectedUnitsSorted
+local spGetSelectedUnits = Spring.GetSelectedUnits
 local spGetMyTeamID = Spring.GetMyTeamID
 local spSelectUnit = Spring.SelectUnit
 local spGetUnitDefID = Spring.GetUnitDefID
+local spGiveOrderToUnitArray = Spring.GiveOrderToUnitArray
 
 local defIDPriority = {}
 local myFactoryIDs = {}
@@ -148,6 +152,31 @@ local function initializeUnitDefPriorities()
     }
 end
 
+local function getMainFactory()
+    if #myFactoryIDs == 0 then
+        return nil
+    else
+        return myFactoryIDs[#myFactoryIDs]
+    end
+end
+
+local function guardMainFactoryAction()
+    local mainFactory = getMainFactory()
+    if mainFactory == nil then
+        return
+    end
+    local units = spGetSelectedUnits()
+    if units == nil then
+        return
+    end
+    for _, unitID in ipairs(units) do
+        util.RemoveCommand(unitID, function(cmd)
+            return cmd.id == CMD.GUARD
+        end)
+    end
+    spGiveOrderToUnitArray(units, CMD.GUARD, {mainFactory}, cCmdGuardOpts)
+end
+
 function widget:Initialize()
     local nameToPriority = initializeUnitDefPriorities()
 
@@ -161,4 +190,5 @@ function widget:Initialize()
     initializeMyFactories()
 
     widgetHandler:AddAction("cycle_factories", cycleFactoriesAction, nil, "p")
+    widgetHandler:AddAction("guard_main_factory", guardMainFactoryAction, nil, "p")
 end
