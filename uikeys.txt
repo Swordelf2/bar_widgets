@@ -176,7 +176,9 @@ bind               ;  fight
 bind         Shift+;  fight
 bind          Ctrl+;  fight
 bind     Shift+u,Shift+u builder_clear_queue
-bind         Shift+u  guard_last_builder
+bind         Shift+y  guard_last_builder
+bind         Shift+y  guard
+bind         Shift+u  guard_main_factory
 bind         Shift+u  guard
 // bind           Alt+sc_f  forcestart
 bind               0,0  stopproduction
@@ -185,8 +187,10 @@ bind               0  factory_clear_queue
 bind               Alt+0  factory_clear_queue
 bind               0  stop
 bind          Ctrl+0  stop
-bind         Shift+8  command_skip_current
-bind     Alt+Shift+8  command_skip_current
+bind         Shift+7  command_skip_current
+bind     Alt+Shift+7  command_skip_current
+bind         Shift+8  command_retain_first
+bind     Alt+Shift+8  command_retain_first
 bind         Shift+0  command_cancel_last
 bind     Alt+Shift+0  command_cancel_last
 bind           Alt+8,Alt+8  repeat 0
@@ -352,8 +356,8 @@ bind             4 select  PrevSelection+_InPrevSel+_SelectOne+
 
 
 // Camera hotkeys
-bind    Alt+Shift+6 save_cam_dist
-bind    Alt+Shift+y set_camera_anchor 1
+bind    Alt+Shift+5 save_cam_dist
+bind    Alt+Shift+6 set_camera_anchor 1
 bind          Alt+p focus_camera_anchor 1
 
 
