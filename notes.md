@@ -52,6 +52,7 @@ J+Alt - consul and shit
 
 # TODO
 Select factories better
+Skip all commands except current one
 
 Cancel/Skip all orders except current one
 Double tap to also cancel queued commands

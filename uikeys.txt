@@ -332,9 +332,9 @@ bind       Shift+b select FromMouseC_1100+_InGroup_7+_SelectAll+
 // bind   Shift+Alt+b select AllMap+_InGroup_7+_ClearSelection_SelectAll+
 
 // Select factories
-bind           8,8 select PrevSelection+_InPrevSel+_SelectOne+
+// bind           8,8 select PrevSelection+_InPrevSel+_SelectOne+
 // bind             8 select AllMap+_Builder_Building+_ClearSelection_SelectClosestToCursor+
-bind             8 select AllMap+_Builder_Building+_ClearSelection_SelectClosestToCursor+
+bind             8 cycle_factories
 bind        Ctrl+8 select AllMap+_Builder_Building+_ClearSelection_SelectAll+
 
 // Select idle worker
