@@ -354,7 +354,7 @@ bind             4 select  PrevSelection+_InPrevSel+_SelectOne+
 // Camera hotkeys
 bind    Alt+Shift+6 save_cam_dist
 bind    Alt+Shift+y set_camera_anchor 1
-bind          Alt+p toggle_and_focus_cam 1
+bind          Alt+p focus_camera_anchor 1
 
 
 

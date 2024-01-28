@@ -51,9 +51,13 @@ J+Alt - consul and shit
 ## Later
 
 # TODO
-Alt-P to always center on cam even from overview
-
+Shift+y - cancel first command
+Maybe
+Shift+y - assist main factory
+Alt+i - cancel first command
+Shift+8 - cancel all commands except current one
 Skip all commands except current one
+Alt-P to always center on cam even from overview
 
 Cancel/Skip all orders except current one
 Double tap to also cancel queued commands
