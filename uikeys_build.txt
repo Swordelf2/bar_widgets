@@ -2,6 +2,10 @@ bind               m  gridmenu_category 1
 bind               .  gridmenu_category 2
 bind               ,  gridmenu_category 3
 bind               /  gridmenu_category 4
+bind           Alt+m  gridmenu_category 1
+bind           Alt+.  gridmenu_category 2
+bind           Alt+,  gridmenu_category 3
+bind           Alt+/  gridmenu_category 4
 bind               Shift+m  gridmenu_category 1
 bind               Shift+.  gridmenu_category 2
 bind               Shift+,  gridmenu_category 3

@@ -26,17 +26,20 @@ function widget:GetInfo()
     }
 end
 
-function widget:SelectionChanged(selectedUnits)
-    -- Update `lastBuilder`
-    if selectedUnits == nil or #selectedUnits ~= 1 then
-        return
+function widget:CommandNotify(cmdID, cmdParams, cmdOpts)
+    if cmdID >= 0 then
+        return false
+    end
+    local selectedUnits = spGetSelectedUnits()
+    if not (selectedUnits and #selectedUnits == 1) then
+        return false
     end
     local unitID = selectedUnits[1]
-    local unitDefID = spGetUnitDefID(unitID)
-    if unitDefID == nil or not isBuilder[unitDefID] then
-        return
+    if not isBuilder[spGetUnitDefID(unitID)] then
+        return false
     end
     lastBuilder = unitID
+    return false
 end
 
 local function action()
@@ -64,7 +67,7 @@ end
 
 function widget:Initialize()
     for unitDefID, unitDef in pairs(UnitDefs) do
-        if unitDef.buildSpeed > 0 and unitDef.buildOptions[1] then
+        if unitDef.buildSpeed > 0 and unitDef.buildOptions[1] and not unitDef.isFactory then
             isBuilder[unitDefID] = true
         end
     end
