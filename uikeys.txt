@@ -380,3 +380,5 @@ bind          Alt+p focus_camera_anchor 1
 // bind                 9  focus_camera_anchor 2
 // bind                 F3  focus_camera_anchor 3
 // bind                 F4  focus_camera_anchor 4
+
+bind 5 switch_trajectory

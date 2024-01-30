@@ -51,6 +51,8 @@ J+Alt - consul and shit
 ## Later
 
 # TODO
+Fix AttackRangeGL4 widget to not use up the keybinds Alt+, and stuff
+
 scenario: select a builder, queue up commands and guard factory
 then select BP around, cancel all their commands Shift+8 and then Shift+y
 But then all the builders commands get canceled as well
