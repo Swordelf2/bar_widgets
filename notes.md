@@ -51,7 +51,8 @@ J+Alt - consul and shit
 ## Later
 
 # TODO
-Fix AttackRangeGL4 widget to not use up the keybinds Alt+, and stuff
+How to use rez bots
+Fight command? Does it reclaim enemy?
 
 scenario: select a builder, queue up commands and guard factory
 then select BP around, cancel all their commands Shift+8 and then Shift+y
@@ -68,7 +69,6 @@ Test everything in multiplyaer game vs AI
 
 
 # Ideas for later
-Rezed units added to autogroup?
 
 Alt-P to always center on cam even from overview
 

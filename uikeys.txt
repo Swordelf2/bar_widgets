@@ -218,6 +218,9 @@ bind               '  settarget
 bind          Ctrl+'  canceltarget
 bind     Alt+',Alt+'  firestate 2
 bind           Alt+'  firestate 0
+bind     Alt+],Alt+]  onoff 0
+bind           Alt+]  onoff 1
+
 // bind               sc_u  unloadunits
 // bind         Shift+sc_u  unloadunits
 bind               Alt+[  resurrect
@@ -360,8 +363,6 @@ bind             4 select  PrevSelection+_InPrevSel+_SelectOne+
 bind    Alt+Shift+5 save_cam_dist
 bind    Alt+Shift+6 set_camera_anchor 1
 bind          Alt+p focus_camera_anchor 1
-
-
 
 
 
