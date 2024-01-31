@@ -164,17 +164,23 @@ bind     Shift+Alt+c  buildspacing dec
 // TODO: factories can't selfd but nobody cares maybe?
 bind           Alt+-  selfd
 bind          Ctrl+-  selfd
-bind    Ctrl+Shift+-  selfd queued
-bind    Alt+Shift+-  selfd queued
+bind               [  repair
+bind         Shift+[  repair
+// bind    Ctrl+Shift+-  selfd queued
+// bind    Alt+Shift+-  selfd queued
 bind               -  manualfire
 bind         Shift+-  manualfire
 bind               -  manuallaunch
 bind         Shift+-  manuallaunch
 bind               ]  reclaim
 bind         Shift+]  reclaim
+bind               Alt+[  resurrect
+bind         Shift+Alt+[  resurrect
 bind               ;  fight
 bind         Shift+;  fight
 bind          Ctrl+;  fight
+bind               \  patrol
+bind         Shift+\  patrol
 bind     Shift+u,Shift+u builder_clear_queue
 bind         Shift+y  guard_last_builder
 bind         Shift+y  guard
@@ -196,8 +202,6 @@ bind         Shift+0  command_cancel_last
 bind     Alt+Shift+0  command_cancel_last
 bind           Alt+8,Alt+8  repeat 0
 bind           Alt+8  repeat 1
-bind               \  patrol
-bind         Shift+\  patrol
 bind               t  unit_stats
 bind          Ctrl+t  customgameinfo
 // bind               sc_j  loadunits
@@ -212,8 +216,6 @@ bind           Shift+=  wantcloak
 // bind         Shift+sc_o  guard
 // bind               ]  gatherwait
 // bind         Shift+]  gatherwait
-bind               [  repair
-bind         Shift+[  repair
 bind               '  settarget
 bind          Ctrl+'  canceltarget
 bind     Alt+',Alt+'  firestate 2
@@ -223,8 +225,6 @@ bind           Alt+]  onoff 1
 
 // bind               sc_u  unloadunits
 // bind         Shift+sc_u  unloadunits
-bind               Alt+[  resurrect
-bind         Shift+Alt+[  resurrect
 // bind               sc_w  capture
 // bind         Shift+sc_w  capture
 // bind               sc_y  wait
