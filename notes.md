@@ -51,13 +51,9 @@ J+Alt - consul and shit
 ## Later
 
 # TODO
-Remove selfd from Alt+-
-Put rez on `-`
-Make Alt, Shift and Alt+Shift work on all reclaim rez repair commands
 Use Shift+Alt commands
 
 How to use rez bots
-Fight command? Does it reclaim enemy?
 
 scenario: select a builder, queue up commands and guard factory
 then select BP around, cancel all their commands Shift+8 and then Shift+y

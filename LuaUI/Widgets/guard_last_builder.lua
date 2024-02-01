@@ -6,6 +6,8 @@ local cCmdOpts = {"shift"}
 local isBuilder = {}
 local lastBuilder = nil
 
+local CMD_AREA_MEX = 10100
+
 -- Speedups
 local spGetSelectedUnits = Spring.GetSelectedUnits
 local spGiveOrderToUnitArray = Spring.GiveOrderToUnitArray
@@ -27,7 +29,7 @@ function widget:GetInfo()
 end
 
 function widget:CommandNotify(cmdID, cmdParams, cmdOpts)
-    if cmdID >= 0 then
+    if not (cmdID < 0 or cmdID == CMD_AREA_MEX) then
         return false
     end
     local selectedUnits = spGetSelectedUnits()

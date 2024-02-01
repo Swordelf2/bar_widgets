@@ -162,10 +162,13 @@ bind     Shift+Alt+c  buildspacing dec
 // bind          Ctrl+\  areaattack
 // bind    Ctrl+Shift+\  areaattack
 // TODO: factories can't selfd but nobody cares maybe?
-bind           Alt+-  selfd
 bind          Ctrl+-  selfd
 bind               [  repair
 bind         Shift+[  repair
+bind     Alt+Shift+[  repair
+bind               -  resurrect
+bind         Shift+-  resurrect
+bind     Alt+Shift+-  resurrect
 // bind    Ctrl+Shift+-  selfd queued
 // bind    Alt+Shift+-  selfd queued
 bind               -  manualfire
@@ -174,8 +177,7 @@ bind               -  manuallaunch
 bind         Shift+-  manuallaunch
 bind               ]  reclaim
 bind         Shift+]  reclaim
-bind               Alt+[  resurrect
-bind         Shift+Alt+[  resurrect
+bind     Alt+Shift+]  reclaim
 bind               ;  fight
 bind         Shift+;  fight
 bind          Ctrl+;  fight
