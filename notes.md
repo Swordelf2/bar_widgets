@@ -5,8 +5,8 @@
 
 # Groups
 
-0 - scouts 
-1 - micro units (janus etc)
+0 - N - scouts 
+1 - L - micro units (janus etc)
 2 - front units and raiders? (med tanks, blitzes)
 3 - skirmishers (long range, slower)
 4 - artillery (very slow)
@@ -70,6 +70,9 @@ Test everything in multiplyaer game vs AI
 
 
 # Ideas for later
+
+Very cool new way to select units, possibly using a combination of 2
+consecutive keys
 
 Alt-P to always center on cam even from overview
 

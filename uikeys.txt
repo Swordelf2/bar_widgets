@@ -92,8 +92,8 @@ bind              Shift+Ctrl+F3  add_to_autogroup 8
 bind              Shift+Ctrl+F4  add_to_autogroup 9
 // bind              Alt+9  add_to_autogroup 9
 // bind                  7  group 0
-// bind                  j  group 1
-// bind                  h  group 2
+  
+
 // bind                  g  group 3
 // bind                  n  group 4
 // bind                  b  group 5
@@ -195,7 +195,8 @@ bind               0  factory_clear_queue
 bind               Alt+0  factory_clear_queue
 bind               0  stop
 bind          Ctrl+0  stop
-bind           Alt+; stop
+bind           Alt+;  release_guards
+bind           Alt+;  stop
 bind         Shift+7  command_skip_current
 bind     Alt+Shift+7  command_skip_current
 bind         Shift+8  command_retain_first
@@ -276,7 +277,7 @@ bind                f10  drawinmap
 // SPECIAL SELECTS
 
 // Select nearby BP (add)
-bind        Shift+p         select      FromMouseC_600+_Builder_Not_Building_Buildoptions_Not_IdMatches_armmlv+_SelectAll+
+bind        Shift+p         select      FromMouseC_400+_Builder_Not_Building_Buildoptions_Not_IdMatches_armmlv+_SelectAll+
 
 // Select closest specific builders t1 or t2 - double to center camera on one
 bind         Alt+l,Alt+l select  PrevSelection+_InPrevSel+_SelectOne+
@@ -294,7 +295,7 @@ bind              i,i select  PrevSelection+_InPrevSel+_SelectOne+
 bind              i select AllMap+_ManualFireUnit_Builder_Not_IdMatches_cordecom_Not_IdMatches_armdecom+_ClearSelection_SelectClosestToCursor+
 
 // Select repair units (add)
-bind       Shift+i select FromMouseC_1000+_InGroup_8+_SelectAll
+bind       Shift+i select FromMouseC_1000+_InGroup_8_Not_ManualFireUnit+_SelectAll
 
 // Groups
 bind             n select FromMouseC_1000+_InGroup_0+_ClearSelection_SelectAll+

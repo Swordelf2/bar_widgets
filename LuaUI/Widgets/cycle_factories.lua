@@ -4,10 +4,14 @@ local cCmdGuardOpts = {"shift"}
 
 local spGetSelectedUnitsSorted = Spring.GetSelectedUnitsSorted
 local spGetSelectedUnits = Spring.GetSelectedUnits
+local spGetTeamUnitsSorted = Spring.GetTeamUnitsSorted
 local spGetMyTeamID = Spring.GetMyTeamID
 local spSelectUnit = Spring.SelectUnit
 local spGetUnitDefID = Spring.GetUnitDefID
 local spGiveOrderToUnitArray = Spring.GiveOrderToUnitArray
+local spGetCommandQueue = Spring.GetCommandQueue
+
+local isBuilder = {}
 
 local defIDPriority = {}
 local myFactoryIDs = {}
@@ -160,12 +164,11 @@ local function getMainFactory()
     end
 end
 
-local function guardMainFactoryAction()
+local function issueGuardMainFactory(units)
     local mainFactory = getMainFactory()
     if mainFactory == nil then
         return
     end
-    local units = spGetSelectedUnits()
     if units == nil then
         return
     end
@@ -177,6 +180,49 @@ local function guardMainFactoryAction()
     spGiveOrderToUnitArray(units, CMD.GUARD, {mainFactory}, cCmdGuardOpts)
 end
 
+local function guardMainFactoryAction()
+    local units = spGetSelectedUnits()
+    issueGuardMainFactory(units)
+end
+
+-- Check if `unitID` has a guard order onto on of the units in `unitsMap`.
+local function isGuarding(unitID, unitsMap)
+    if unitID == 4866 then
+        Spring.Echo("here")
+    end
+    local commandQueue = spGetCommandQueue(unitID, -1)
+    if commandQueue == nil or #commandQueue == 0 then
+        return false
+    end
+    local lastCommand = commandQueue[#commandQueue]
+    if lastCommand.id ~= CMD.GUARD then
+        return false
+    end
+    return unitsMap[lastCommand.params[1]]
+end
+
+-- releases builders guarding selected units - sets them to guard factory
+local function releaseGuardsAction()
+    local selectedUnits = spGetSelectedUnits()
+    local selectedUnitsMap = {}
+    for _, unitID in ipairs(selectedUnits) do
+        selectedUnitsMap[unitID] = true
+    end
+
+    local guardingUnits = {}
+
+    local allUnits = Spring.GetTeamUnits(spGetMyTeamID())
+    for _, unit in ipairs(allUnits) do
+        if isBuilder[spGetUnitDefID(unit)] then
+            if isGuarding(unit, selectedUnitsMap) then
+                table.insert(guardingUnits, unit)
+            end
+        end
+    end
+
+    issueGuardMainFactory(guardingUnits)
+end
+
 function widget:Initialize()
     local nameToPriority = initializeUnitDefPriorities()
 
@@ -185,10 +231,14 @@ function widget:Initialize()
         if priority ~= nil then
             defIDPriority[unitDefID] = priority
         end
+        if unitDef.buildSpeed > 0 and unitDef.buildOptions[1] and not unitDef.isFactory then
+            isBuilder[unitDefID] = true
+        end
     end
 
     initializeMyFactories()
 
     widgetHandler:AddAction("cycle_factories", cycleFactoriesAction, nil, "p")
     widgetHandler:AddAction("guard_main_factory", guardMainFactoryAction, nil, "p")
+    widgetHandler:AddAction("release_guards", releaseGuardsAction, nil, "p")
 end
