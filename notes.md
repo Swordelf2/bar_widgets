@@ -7,10 +7,10 @@
 
 0 - N - scouts 
 1 - L - micro units (janus etc)
-2 - front units and raiders? (med tanks, blitzes)
-3 - skirmishers (long range, slower)
-4 - artillery (very slow)
-5 - special (spybots, gremlins etc.)
+2 - K - front units and raiders? (med tanks, blitzes)
+3 - J - skirmishers (long range, slower)
+4 - 9 - artillery (very slow)
+5 - H - special (spybots, gremlins etc.)
 6 - (g key, not sure yet)
 7 - minelayers and shit
 8 - units that can repair on the battlefield - consuls, rez bots and shit
