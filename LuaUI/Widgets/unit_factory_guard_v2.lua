@@ -10,17 +10,16 @@
 --
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
-
 function widget:GetInfo()
-  return {
-    name      = "FactoryGuard_v2",
-    desc      = "Assigns new builders to assist their source factory",
-    author    = "trepan",
-    date      = "Jan 8, 2007",
-    license   = "GNU GPL, v2 or later",
-    layer     = 0,
-    enabled   = true  --  loaded by default?
-  }
+    return {
+        name = "FactoryGuard_v2",
+        desc = "Assigns new builders to assist their source factory",
+        author = "trepan",
+        date = "Jan 8, 2007",
+        license = "GNU GPL, v2 or later",
+        layer = 0,
+        enabled = true --  loaded by default?
+    }
 end
 
 --------------------------------------------------------------------------------
@@ -28,16 +27,15 @@ end
 
 -- Automatically generated local definitions
 
-local CMD_GUARD            = CMD.GUARD
-local CMD_MOVE             = CMD.MOVE
-local spGetMyTeamID        = Spring.GetMyTeamID
+local CMD_GUARD = CMD.GUARD
+local CMD_MOVE = CMD.MOVE
+local spGetMyTeamID = Spring.GetMyTeamID
 local spGetUnitBuildFacing = Spring.GetUnitBuildFacing
-local spGetUnitGroup       = Spring.GetUnitGroup
-local spGetUnitPosition    = Spring.GetUnitPosition
-local spGetUnitRadius      = Spring.GetUnitRadius
-local spGiveOrderToUnit    = Spring.GiveOrderToUnit
-local spSetUnitGroup       = Spring.SetUnitGroup
-
+local spGetUnitGroup = Spring.GetUnitGroup
+local spGetUnitPosition = Spring.GetUnitPosition
+local spGetUnitRadius = Spring.GetUnitRadius
+local spGiveOrderToUnit = Spring.GiveOrderToUnit
+local spSetUnitGroup = Spring.SetUnitGroup
 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
@@ -60,107 +58,105 @@ local spSetUnitGroup       = Spring.SetUnitGroup
 local isFactory = {}
 local isAssistBuilder = {}
 for unitDefID, unitDef in pairs(UnitDefs) do
-  if unitDef.isFactory then
-    isFactory[unitDefID] = true
-  end
-  if unitDef.isBuilder and unitDef.canAssist then
-    isAssistBuilder[unitDefID] = true
-  end
+    if unitDef.isFactory then
+        isFactory[unitDefID] = true
+    end
+    if unitDef.isBuilder and unitDef.canAssist then
+        isAssistBuilder[unitDefID] = true
+    end
 end
-
 
 local function GuardFactory(unitID, unitDefID, factID, factDefID)
 
-  if not isFactory[factDefID] then  -- is this a factory?
-    return
-  end
-  if not isAssistBuilder[unitDefID] then -- can this unit assist?
-    return
-  end
+    if not isFactory[factDefID] then -- is this a factory?
+        return
+    end
+    if not isAssistBuilder[unitDefID] then -- can this unit assist?
+        return
+    end
 
-  local x, y, z = spGetUnitPosition(factID)
-  if (not x) then
-    return
-  end
+    local x, y, z = spGetUnitPosition(factID)
+    if (not x) then
+        return
+    end
 
-  local radius = spGetUnitRadius(factID)
-  if (not radius) then
-    return
-  end
-  local dist = radius * 2
+    local radius = spGetUnitRadius(factID)
+    if (not radius) then
+        return
+    end
+    local dist = radius * 2
 
-  local facing = spGetUnitBuildFacing(factID)
-  if (not facing) then
-    return
-  end
+    local facing = spGetUnitBuildFacing(factID)
+    if (not facing) then
+        return
+    end
 
-  -- facing values { S = 0, E = 1, N = 2, W = 3 }
-  local dx, dz -- down vector
-  local rx, rz -- right vector
-  if (facing == 0) then
-    -- south
-    dx, dz =  0,  dist
-    rx, rz =  dist,  0
-  elseif (facing == 1) then
-    -- east
-    dx, dz =  dist,  0
-    rx, rz =  0, -dist
-  elseif (facing == 2) then
-    -- north
-    dx, dz =  0, -dist
-    rx, rz = -dist,  0
-  else
-    -- west
-    dx, dz = -dist,  0
-    rx, rz =  0,  dist
-  end
+    -- facing values { S = 0, E = 1, N = 2, W = 3 }
+    local dx, dz -- down vector
+    local rx, rz -- right vector
+    if (facing == 0) then
+        -- south
+        dx, dz = 0, dist
+        rx, rz = dist, 0
+    elseif (facing == 1) then
+        -- east
+        dx, dz = dist, 0
+        rx, rz = 0, -dist
+    elseif (facing == 2) then
+        -- north
+        dx, dz = 0, -dist
+        rx, rz = -dist, 0
+    else
+        -- west
+        dx, dz = -dist, 0
+        rx, rz = 0, dist
+    end
 
-  local OrderUnit = spGiveOrderToUnit
+    local OrderUnit = spGiveOrderToUnit
 
-  OrderUnit(unitID, CMD_MOVE,  { x + dx, y, z + dz }, { "" })
-  if Spring.TestMoveOrder(unitDefID, x + dx + rx, y, z + dz + rz) then
-	OrderUnit(unitID, CMD_MOVE,  { x + dx + rx, y, z + dz + rz }, { "shift" })
-		  if Spring.TestMoveOrder(unitDefID, x + rx, y, z + rz ) then
-			OrderUnit(unitID, CMD_MOVE,  { x + rx, y, z + rz }, { "shift" })
-		  end
-  elseif Spring.TestMoveOrder(unitDefID, x + dx - rx, y, z + dz - rz) then
-    OrderUnit(unitID, CMD_MOVE,  { x + dx - rx, y, z + dz - rz }, { "shift" })
-		  if Spring.TestMoveOrder(unitDefID, x - rx, y, z - rz ) then
-			OrderUnit(unitID, CMD_MOVE,  { x - rx, y, z - rz  }, { "shift" })
-		  end
-  end
-  OrderUnit(unitID, CMD_GUARD, { factID },            { "shift" })
+    OrderUnit(unitID, CMD_MOVE, {x + dx, y, z + dz}, {""})
+    if Spring.TestMoveOrder(unitDefID, x + dx + rx, y, z + dz + rz) then
+        OrderUnit(unitID, CMD_MOVE, {x + dx + rx, y, z + dz + rz}, {"shift"})
+        if Spring.TestMoveOrder(unitDefID, x + rx, y, z + rz) then
+            OrderUnit(unitID, CMD_MOVE, {x + rx, y, z + rz}, {"shift"})
+        end
+    elseif Spring.TestMoveOrder(unitDefID, x + dx - rx, y, z + dz - rz) then
+        OrderUnit(unitID, CMD_MOVE, {x + dx - rx, y, z + dz - rz}, {"shift"})
+        if Spring.TestMoveOrder(unitDefID, x - rx, y, z - rz) then
+            OrderUnit(unitID, CMD_MOVE, {x - rx, y, z - rz}, {"shift"})
+        end
+    end
+    OrderUnit(unitID, CMD_GUARD, {factID}, {"shift"})
 end
-
 
 --------------------------------------------------------------------------------
 
-function widget:UnitFromFactory(unitID, unitDefID, unitTeam,
-                                factID, factDefID, userOrders)
-  if (unitTeam ~= spGetMyTeamID()) then
-    return -- not my unit
-  end
+function widget:UnitFromFactory(unitID, unitDefID, unitTeam, factID, factDefID, userOrders)
+    if (unitTeam ~= spGetMyTeamID()) then
+        return -- not my unit
+    end
 
-  local unitGroup = spGetUnitGroup(unitID)
+    local unitGroup = spGetUnitGroup(unitID)
 
-  if (unitGroup and unitGroup ~= 9) then
-    return -- in a control group other than 9 (ctors)
-  end
+    Spring.Echo(unitGroup)
 
---   ClearGroup(unitID, factID, unitGroup)
+    if (unitGroup and unitGroup ~= 9) then
+        return -- in a control group other than 9 (ctors)
+    end
 
-  if (userOrders) then
-    return -- already has user assigned orders
-  end
+    --   ClearGroup(unitID, factID, unitGroup)
 
-  GuardFactory(unitID, unitDefID, factID, factDefID)
+    if (userOrders) then
+        return -- already has user assigned orders
+    end
+
+    GuardFactory(unitID, unitDefID, factID, factDefID)
 end
-
 
 --------------------------------------------------------------------------------
 
 function widget:GameStart()
-  widget:PlayerChanged()
+    widget:PlayerChanged()
 end
 
 function widget:PlayerChanged(playerID)

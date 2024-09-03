@@ -60,7 +60,7 @@ bind          Any+enter  edit_return
 // bind       Any+pagedown  movedown
 // bind            Any+alt  movereset
 // bind            Any+alt  moverotate
-bind           Any+e  movetilt
+bind           Shift+e  movetilt
 
 bind               /  attack
 bind         Shift+/  attack
@@ -366,9 +366,6 @@ bind             4 select  PrevSelection+_InPrevSel+_SelectOne+
 bind    Alt+Shift+5 save_cam_dist
 bind    Alt+Shift+6 set_camera_anchor 1
 bind          Alt+p focus_camera_anchor 1
-
-
-
 
 
 
