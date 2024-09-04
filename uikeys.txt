@@ -258,9 +258,13 @@ bind           Alt+]  onoff 1
 // bind         Shift+sc_t  repeat 1
 // bind           Any+sc_'  togglelos
 
-bind          p   set_cam_dist
-bind          p  camera_focus
-bind      ctrl+p camera_focus
+bind          p  my_camera_zoom_out
+bind      Ctrl+p my_camera_zoom_out
+bind       Alt+j my_camera_zoom_in
+
+bind       Alt+q my_camera_save_dist short
+bind       Alt+w my_camera_save_dist medium
+bind       Alt+e my_camera_save_dist long
 // bind           Alt+sc_o  cameraflip
 bind            Ctrl+f5  viewta
 bind            Ctrl+f6  viewspring

@@ -1,8 +1,7 @@
 # Stack
 
-load unload fix
-Camera shit
 Rez bot control group
+Selection?
 
 # INSTALL GUIDE
 
@@ -86,10 +85,11 @@ Test everything in multiplyaer game vs AI
 
 # Ideas for later
 
+Use gatherwait 
+
 Very cool new way to select units, possibly using a combination of 2
 consecutive keys
 
-Alt-P to always center on cam even from overview
 
 Double tap to also cancel queued commands
 Last builder - set only when given an order
@@ -99,10 +99,7 @@ Rebind Repeat to Shift+X as it's easier when issuing orders with Shift (maybe sh
 Create a panic button - Wait all builders and factories
 Create a STRONGER panic button - Also wait all energy consuming fighting units
 
-Watch teddy's or pro_randy's replays
-
 Shift+X - clear selection on press, add to selection on repeat ("r")
-Use gatherwait (only before a fight command)
 So go back with Ctrl, then queue up gatherwait then queue up Fight command forward
 
 Free  up `M` in build keys (as we never need to press it)
