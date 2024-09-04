@@ -162,25 +162,29 @@ bind     Shift+Alt+c  buildspacing dec
 // bind          Ctrl+\  areaattack
 // bind    Ctrl+Shift+\  areaattack
 // TODO: factories can't selfd but nobody cares maybe?
-bind          Ctrl+-  selfd
-bind               [  repair
-bind         Shift+[  repair
-bind     Alt+Shift+[  repair
-bind               -  resurrect
-bind         Shift+-  resurrect
-bind     Alt+Shift+-  resurrect
+bind          Ctrl+]  selfd
+bind               ;  repair
+bind         Shift+;  repair
+bind     Alt+Shift+;  repair
+bind               ]  resurrect
+bind         Shift+]  resurrect
+bind     Alt+Shift+]  resurrect
 // bind    Ctrl+Shift+-  selfd queued
 // bind    Alt+Shift+-  selfd queued
 bind               -  manualfire
 bind         Shift+-  manualfire
 bind               -  manuallaunch
 bind         Shift+-  manuallaunch
-bind               ]  reclaim
-bind         Shift+]  reclaim
-bind     Alt+Shift+]  reclaim
-bind               ;  fight
-bind         Shift+;  fight
-bind          Ctrl+;  fight
+bind               [  reclaim
+bind         Shift+[  reclaim
+bind     Alt+Shift+[  reclaim
+bind               -  fight
+bind         Shift+-  fight
+bind          Ctrl+-  fight
+bind               ;  loadunits
+bind         Shift+;  loadunits
+bind               [  unloadunits
+bind         Shift+[  unloadunits
 bind               \  patrol
 bind         Shift+\  patrol
 bind     Shift+u,Shift+u builder_clear_queue
@@ -255,8 +259,8 @@ bind           Alt+]  onoff 1
 // bind           Any+sc_'  togglelos
 
 bind          p   set_cam_dist
-bind          p  toggleoverview
-bind      ctrl+p toggleoverview
+bind          p  camera_focus
+bind      ctrl+p camera_focus
 // bind           Alt+sc_o  cameraflip
 bind            Ctrl+f5  viewta
 bind            Ctrl+f6  viewspring
@@ -368,8 +372,6 @@ bind    Alt+Shift+6 set_camera_anchor 1
 bind          Alt+p focus_camera_anchor 1
 
 
-
-
 // bind               sc_=  snd_volume_increase
 // bind               sc_-  snd_volume_decrease
 // bind            numpad-  snd_volume_decrease
@@ -381,5 +383,3 @@ bind          Alt+p focus_camera_anchor 1
 // bind                 9  focus_camera_anchor 2
 // bind                 F3  focus_camera_anchor 3
 // bind                 F4  focus_camera_anchor 4
-
-bind 5 switch_trajectory

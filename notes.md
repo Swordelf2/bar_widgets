@@ -1,3 +1,9 @@
+# Stack
+
+load unload fix
+Camera shit
+Rez bot control group
+
 # INSTALL GUIDE
 
 * Disable widget "Default Group Recall Fix"
@@ -44,6 +50,15 @@ L+Alt - t1 con
 K+Alt - t2 con
 J+Alt - consul and shit
 
+```
+; repair
+[ reclaim
+] resurrect
+- dgun, fight
+
+```
+
+
 
 
 
@@ -79,7 +94,6 @@ Alt-P to always center on cam even from overview
 Double tap to also cancel queued commands
 Last builder - set only when given an order
 Issuing a non-shift command sets Repeat Off (TO NON FACTORIES).
-Also cancelling all commands and Stop sets Repeat to off
 Rebind Repeat to Shift+X as it's easier when issuing orders with Shift (maybe shift+-)
 
 Create a panic button - Wait all builders and factories
@@ -92,14 +106,3 @@ Use gatherwait (only before a fight command)
 So go back with Ctrl, then queue up gatherwait then queue up Fight command forward
 
 Free  up `M` in build keys (as we never need to press it)
-
-WTF is range display of corconfig
-
-Евгений Папазьян, [1/24/2024 5:44 PM]
-Practice wind farms
-
-Евгений Папазьян, [1/24/2024 5:44 PM]
-And bota
-
-Евгений Папазьян, [1/24/2024 5:44 PM]
-And E storage!!!!
