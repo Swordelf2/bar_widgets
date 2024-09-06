@@ -2,6 +2,8 @@
 
 Rez bot control group
 Selection?
+consuls and butlers factory guard?
+add cor units to cgs
 
 # INSTALL GUIDE
 

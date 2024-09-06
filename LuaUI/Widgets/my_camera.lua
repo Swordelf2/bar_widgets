@@ -60,10 +60,10 @@ local function cameraZoomIn(dist, camState)
     local x, _, z = mouseWorldCoords()
     if x == nil then
         Spring.Echo("Mouse is off map")
-        return
+    else
+        camState.px = x
+        camState.pz = z
     end
-    camState.px = x
-    camState.pz = z
     camState.dist = dist
     spSetCameraState(camState, 1)
 end
