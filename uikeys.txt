@@ -5,7 +5,8 @@ unbind enter chat  // clear the defaults
 fakemeta  space
 
 // Drag scroll
-bind Any+o mouse2
+// bind p   mouse2
+// bind o   mouse2
 
 bind         Ctrl+, select  AllMap+_Builder_Not_Building_Buildoptions_Not_InHotkeyGroup+_ClearSelection_SelectClosestToCursor+
 bind         Ctrl+. select  AllMap+_Builder_Not_Building_InGroup_9+_ClearSelection_SelectClosestToCursor+
@@ -258,9 +259,10 @@ bind           Alt+]  onoff 1
 // bind         Shift+sc_t  repeat 1
 // bind           Any+sc_'  togglelos
 
-bind          p  my_camera_zoom_out
-bind      Ctrl+p my_camera_zoom_out
-bind       Alt+j my_camera_zoom_in
+// bind           o my_camera_zoom_out
+// bind      Ctrl+o my_camera_zoom_out
+bind           o my_camera_zoom_in
+bind      Ctrl+o my_camera_zoom_in
 
 bind       Alt+q my_camera_save_dist short
 bind       Alt+w my_camera_save_dist medium
@@ -371,9 +373,10 @@ bind             4 select  PrevSelection+_InPrevSel+_SelectOne+
 
 
 // Camera hotkeys
-bind    Alt+Shift+5 save_cam_dist
 bind    Alt+Shift+6 set_camera_anchor 1
 bind          Alt+p focus_camera_anchor 1
+bind    Alt+Shift+5 set_camera_anchor 2
+bind          p     focus_camera_anchor 2
 
 
 // bind               sc_=  snd_volume_increase

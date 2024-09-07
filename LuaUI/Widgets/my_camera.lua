@@ -60,9 +60,12 @@ local function cameraZoomIn(dist, camState)
     local x, _, z = mouseWorldCoords()
     if x == nil then
         Spring.Echo("Mouse is off map")
-    else
+    elseif dist < camState.dist then
         camState.px = x
         camState.pz = z
+        -- local coeff = (camState.dist - dist) / camState.dist
+        -- camState.px = camState.px + (x - camState.px) * coeff
+        -- camState.pz = camState.pz + (z - camState.pz) * coeff
     end
     camState.dist = dist
     spSetCameraState(camState, 1)
@@ -75,24 +78,20 @@ end
 
 local function actionCameraZoomOut()
     local camState = spGetCameraState()
-    local curDist = camState.dist
-    if curDist <= camDist.short + 100 then
-        cameraZoomOut(camDist.medium, camState)
-    elseif curDist <= camDist.medium + 100 then
-        cameraZoomOut(camDist.long, camState)
-    else
-        -- We are zoomed out fully, zoom in instead
-        cameraZoomIn(camDist.medium, camState)
-    end
+    cameraZoomOut(camDist.long, camState)
 end
 
 local function actionCameraZoomIn()
     local camState = spGetCameraState()
     local curDist = camState.dist
-    if curDist < camDist.short then
+    if curDist <= camDist.short - 50 then
         cameraZoomOut(camDist.short, camState)
-    else
+    elseif curDist <= camDist.short + 50 then
+        cameraZoomOut(camDist.medium, camState)
+    elseif curDist <= camDist.medium + 50 then
         cameraZoomIn(camDist.short, camState)
+    else
+        cameraZoomIn(camDist.medium, camState)
     end
 end
 
