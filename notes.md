@@ -67,6 +67,8 @@ J+Alt - consul and shit
 ## Later
 
 # TODO
+Use gatherwait 
+
 Use Shift+Alt commands
 
 How to use rez bots
@@ -87,7 +89,8 @@ Test everything in multiplyaer game vs AI
 
 # Ideas for later
 
-Use gatherwait 
+Use release_guards my command?
+
 
 Very cool new way to select units, possibly using a combination of 2
 consecutive keys

@@ -8,6 +8,8 @@ fakemeta  space
 // bind p   mouse2
 // bind o   mouse2
 
+bind Any+o mouse2
+
 bind         Ctrl+, select  AllMap+_Builder_Not_Building_Buildoptions_Not_InHotkeyGroup+_ClearSelection_SelectClosestToCursor+
 bind         Ctrl+. select  AllMap+_Builder_Not_Building_InGroup_9+_ClearSelection_SelectClosestToCursor+
 
@@ -188,7 +190,6 @@ bind               [  unloadunits
 bind         Shift+[  unloadunits
 bind               \  patrol
 bind         Shift+\  patrol
-bind     Shift+u,Shift+u builder_clear_queue
 bind         Shift+y  guard_last_builder
 bind         Shift+y  guard
 bind         Shift+u  guard_main_factory
@@ -200,8 +201,6 @@ bind               0  factory_clear_queue
 bind               Alt+0  factory_clear_queue
 bind               0  stop
 bind          Ctrl+0  stop
-bind           Alt+;  release_guards
-bind           Alt+;  stop
 bind         Shift+7  command_skip_current
 bind     Alt+Shift+7  command_skip_current
 bind         Shift+8  command_retain_first
@@ -261,12 +260,18 @@ bind           Alt+]  onoff 1
 
 // bind           o my_camera_zoom_out
 // bind      Ctrl+o my_camera_zoom_out
-bind           o my_camera_zoom_in
-bind      Ctrl+o my_camera_zoom_in
+bind           Alt+o my_camera_zoom_in
+bind           p my_camera_zoom_out
+bind      Ctrl+p my_camera_zoom_out
 
 bind       Alt+q my_camera_save_dist short
 bind       Alt+w my_camera_save_dist medium
 bind       Alt+e my_camera_save_dist long
+
+// Camera hotkeys
+bind    Alt+Shift+6 set_camera_anchor 1
+bind          Alt+; focus_camera_anchor 1
+
 // bind           Alt+sc_o  cameraflip
 bind            Ctrl+f5  viewta
 bind            Ctrl+f6  viewspring
@@ -286,14 +291,23 @@ bind                f10  drawinmap
 
 // SPECIAL SELECTS
 
+// Select selected unit kinds on the entire map
+bind          Alt+b select AllMap+_InPrevSel+_SelectAll+ 
+
+// Add to selection same unit kinds in a circle
+bind          Alt+h select FromMouseC_1000+_InPrevSel+_SelectAll+
+
 // Select nearby BP (add)
 bind        Shift+p         select      FromMouseC_400+_Builder_Not_Building_Buildoptions_Not_IdMatches_armmlv+_SelectAll+
 
 // Select closest specific builders t1 or t2 - double to center camera on one
 bind         Alt+l,Alt+l select  PrevSelection+_InPrevSel+_SelectOne+
-bind         Alt+l select  AllMap+_Builder_Not_Building_Buildoptions_Not_InHotkeyGroup+_ClearSelection_SelectClosestToCursor+
+bind         Alt+l select  AllMap+_Builder_Not_Building_Buildoptions_Not_InHotkeyGroup_Not_ManualFireUnit+_ClearSelection_SelectClosestToCursor+
 bind         Alt+k,Alt+k select  PrevSelection+_InPrevSel+_SelectOne+
 bind         Alt+k select  AllMap+_Builder_Not_Building_InGroup_9+_ClearSelection_SelectClosestToCursor+
+
+// Select nanos
+bind           Alt+n  select FromMouseC_400+_Builder_Not_Buildoptions_Not_InHotkeyGroup+_ClearSelection_SelectAll
 
 // Select closest combat builder
 bind      Alt+i,Alt+i select  PrevSelection+_InPrevSel+_SelectOne+
@@ -372,11 +386,6 @@ bind             4 select  PrevSelection+_InPrevSel+_SelectOne+
 
 
 
-// Camera hotkeys
-bind    Alt+Shift+6 set_camera_anchor 1
-bind          Alt+p focus_camera_anchor 1
-bind    Alt+Shift+5 set_camera_anchor 2
-bind          p     focus_camera_anchor 2
 
 
 // bind               sc_=  snd_volume_increase

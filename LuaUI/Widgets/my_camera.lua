@@ -1,13 +1,15 @@
 local cFramesToWait = 1
-local cConfigFile = "LuaUI/config/my_camera_dist_config.lua"
+local cConfigFile = "LuaUI/config/my_camera_config.lua"
 
 local camDistFromGround = 100 -- some default
 
 -- Default values, if config is empty
-local camDist = {
+local config = {
     short = 1750,
     medium = 3000,
-    long = 5000
+    long = 5000,
+    longx = nil,
+    longz = nil
 }
 
 -- speedups
@@ -71,27 +73,30 @@ local function cameraZoomIn(dist, camState)
     spSetCameraState(camState, 1)
 end
 
-local function cameraZoomOut(dist, camState)
+local function cameraZoomOut(dist, camState, is_long)
     camState.dist = dist
+    if is_long and config.longx ~= nil and config.longz ~= nil then
+        camState.px = config.longx
+        camState.pz = config.longz
+    end
     spSetCameraState(camState, 1)
 end
 
 local function actionCameraZoomOut()
     local camState = spGetCameraState()
-    cameraZoomOut(camDist.long, camState)
+    if camState.dist < config.long then
+        cameraZoomOut(config.long, camState, true)
+    else
+        cameraZoomIn(config.medium, camState)
+    end
 end
 
 local function actionCameraZoomIn()
     local camState = spGetCameraState()
-    local curDist = camState.dist
-    if curDist <= camDist.short - 50 then
-        cameraZoomOut(camDist.short, camState)
-    elseif curDist <= camDist.short + 50 then
-        cameraZoomOut(camDist.medium, camState)
-    elseif curDist <= camDist.medium + 50 then
-        cameraZoomIn(camDist.short, camState)
+    if camState.dist > config.short then
+        cameraZoomIn(config.short, camState)
     else
-        cameraZoomIn(camDist.medium, camState)
+        cameraZoomOut(config.medium, camState)
     end
 end
 
@@ -100,20 +105,26 @@ local function actionCameraSaveDist(_, _, args, _, isRepeat)
         return
     end
     local mode = args[1]
-    if camDist[mode] == nil then
+    if config[mode] == nil then
         Spring.Echo("Invalid MyCamera mode: ", mode)
         return
     end
-    local dist = spGetCameraState().dist
-    Spring.Echo("Saving camDist for mode '", mode, "' to ", dist)
-    camDist[mode] = dist
+
+    local camState = spGetCameraState()
+    config[mode] = camState.dist
+    if mode == "long" then
+        config.longx = camState.px
+        config.longz = camState.pz
+    end
+
     saveConfig({
-        camDist = camDist
+        config = config
     })
+    Spring.Echo("Saved cam config for mode '", mode, "' to ", camState.dist)
 end
 
 function widget:Initialize()
-    camDist = readConfig().camDist or camDist
+    config = readConfig().config or config
     widgetHandler:AddAction("my_camera_zoom_out", actionCameraZoomOut, nil, "p")
     widgetHandler:AddAction("my_camera_zoom_in", actionCameraZoomIn, nil, "p")
     widgetHandler:AddAction("my_camera_save_dist", actionCameraSaveDist, nil, "p")
