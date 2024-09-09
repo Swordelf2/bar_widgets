@@ -6,7 +6,7 @@ local cCmdOpts = {"shift"}
 local isBuilder = {}
 local lastBuilder = nil
 
-local CMD_AREA_MEX = 10100
+local CMD_AREA_MEX = 30100
 
 -- Speedups
 local spGetSelectedUnits = Spring.GetSelectedUnits
@@ -38,6 +38,7 @@ function widget:CommandNotify(cmdID, cmdParams, cmdOpts)
     end
     local unitID = selectedUnits[1]
     if not isBuilder[spGetUnitDefID(unitID)] then
+        Spring.Echo("not a builder")
         return false
     end
     lastBuilder = unitID

@@ -1,5 +1,8 @@
 # Stack
 
+Hound onoff
+Zoom in really close
+
 Rez bot control group
 Selection?
 consuls and butlers factory guard?

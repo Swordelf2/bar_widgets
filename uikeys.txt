@@ -227,6 +227,8 @@ bind               '  settarget
 bind          Ctrl+'  canceltarget
 bind     Alt+',Alt+'  firestate 2
 bind           Alt+'  firestate 0
+bind     Alt+],Alt+]  hound_weapon_toggle 0
+bind           Alt+]  hound_weapon_toggle 0
 bind     Alt+],Alt+]  onoff 0
 bind           Alt+]  onoff 1
 
