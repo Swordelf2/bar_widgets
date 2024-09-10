@@ -3,11 +3,13 @@ local cConfigFile = "LuaUI/config/my_camera_config.lua"
 
 local camDistFromGround = 100 -- some default
 
+local closeShortDist = 700
+
 -- Default values, if config is empty
 local config = {
     short = 1750,
-    medium = 3000,
-    long = 5000,
+    medium = 4000,
+    long = 8000,
     longx = nil,
     longz = nil
 }
@@ -123,10 +125,16 @@ local function actionCameraSaveDist(_, _, args, _, isRepeat)
     Spring.Echo("Saved cam config for mode '", mode, "' to ", camState.dist)
 end
 
+local function actionCameraZoomInClose()
+    local camState = spGetCameraState()
+    cameraZoomIn(closeShortDist, camState)
+end
+
 function widget:Initialize()
     config = readConfig().config or config
     widgetHandler:AddAction("my_camera_zoom_out", actionCameraZoomOut, nil, "p")
     widgetHandler:AddAction("my_camera_zoom_in", actionCameraZoomIn, nil, "p")
+    widgetHandler:AddAction("my_camera_zoom_in_close", actionCameraZoomInClose, nil, "p")
     widgetHandler:AddAction("my_camera_save_dist", actionCameraSaveDist, nil, "p")
 end
 

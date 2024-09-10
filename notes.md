@@ -1,6 +1,5 @@
 # Stack
 
-Hound onoff
 Zoom in really close
 
 Rez bot control group

@@ -228,7 +228,7 @@ bind          Ctrl+'  canceltarget
 bind     Alt+',Alt+'  firestate 2
 bind           Alt+'  firestate 0
 bind     Alt+],Alt+]  hound_weapon_toggle 0
-bind           Alt+]  hound_weapon_toggle 0
+bind           Alt+]  hound_weapon_toggle 1
 bind     Alt+],Alt+]  onoff 0
 bind           Alt+]  onoff 1
 
@@ -262,9 +262,10 @@ bind           Alt+]  onoff 1
 
 // bind           o my_camera_zoom_out
 // bind      Ctrl+o my_camera_zoom_out
-bind           Alt+o my_camera_zoom_in
+bind       Alt+o my_camera_zoom_in
 bind           p my_camera_zoom_out
 bind      Ctrl+p my_camera_zoom_out
+bind       Alt+u my_camera_zoom_in_close
 
 bind       Alt+q my_camera_save_dist short
 bind       Alt+w my_camera_save_dist medium
