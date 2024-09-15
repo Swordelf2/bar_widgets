@@ -86,7 +86,7 @@ end
 
 local function actionCameraZoomOut()
     local camState = spGetCameraState()
-    if camState.dist < config.long then
+    if camState.dist < config.long - 150 then
         cameraZoomOut(config.long, camState, true)
     else
         cameraZoomIn(config.medium, camState)

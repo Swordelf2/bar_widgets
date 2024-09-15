@@ -38,7 +38,6 @@ function widget:CommandNotify(cmdID, cmdParams, cmdOpts)
     end
     local unitID = selectedUnits[1]
     if not isBuilder[spGetUnitDefID(unitID)] then
-        Spring.Echo("not a builder")
         return false
     end
     lastBuilder = unitID

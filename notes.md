@@ -1,10 +1,13 @@
 # Stack
 
-Zoom in really close
+Guard closest factory
+How to queue units in factory properly
+Shift+P Adds units
+Selection way
 
-Rez bot control group
-Selection?
-consuls and butlers factory guard?
+Drop Alt commands like Guard commands if issued a shift command
+Maneuver/Roam
+Remove player menu
 add cor units to cgs
 
 # INSTALL GUIDE
@@ -13,6 +16,8 @@ add cor units to cgs
 * Disable "Guard Remove"
 
 # Groups
+
+NOTE: below is not true anymore
 
 0 - N - scouts 
 1 - L - micro units (janus etc)

@@ -9,7 +9,7 @@ local isFactory = {}
 function widget:GetInfo()
     return {
         name = "Guard Remove V2",
-        desc = "Removes all guard commands from queue when any command is issued",
+        desc = "Removes all Guard and Alt rec/rep/rez commands from queue when any shift command is issued",
         author = "Swordelf",
         version = "v0.1",
         date = "Jan 14, 2024",
@@ -19,16 +19,20 @@ function widget:GetInfo()
     }
 end
 
+local function contains(array, value)
+    for _, elem in ipairs(array) do
+        if elem == value then
+            return true
+        end
+    end
+    return false 
+end
+
 local function cmdHasShift(cmdOpts)
     if cmdOpts.shift then
         return true
     end
-    for _, cmdOpt in ipairs(cmdOpts) do
-        if cmdOpt == "shift" then
-            return true
-        end
-    end
-    return false
+    return contains(cmdOpts, "shift")
 end
 
 function widget:CommandNotify(cmdID, cmdParams, cmdOpts)
@@ -44,7 +48,12 @@ function widget:CommandNotify(cmdID, cmdParams, cmdOpts)
         if not isFactory[unitDefID] then
             for _, unitID in ipairs(unitIDs) do
                 util.RemoveCommand(unitID, function(cmd)
-                    return cmd.id == CMD.GUARD
+                    return cmd.id == CMD.GUARD or
+                        (cmd.options.alt and (
+                            cmd.id == CMD.REPAIR or
+                            cmd.id == CMD.RESURRECT or
+                            cmd.id == CMD.RECLAIM
+                        ))
                 end)
             end
         end
