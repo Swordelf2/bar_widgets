@@ -2,7 +2,6 @@
 
 Do rebinds separately together (GROUP THEM)
 
-Guard closest factory
 Panic button - D Gun is panic button already?
 
 Update top bar widget

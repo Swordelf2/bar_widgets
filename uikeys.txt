@@ -192,7 +192,7 @@ bind               \  patrol
 bind         Shift+\  patrol
 bind         Shift+y  guard_last_builder
 bind         Shift+y  guard
-bind         Shift+u  guard_main_factory
+bind         Shift+u  guard_closest_factory
 bind         Shift+u  guard
 // bind           Alt+sc_f  forcestart
 bind               0,0  stopproduction

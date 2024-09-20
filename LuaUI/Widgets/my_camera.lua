@@ -1,3 +1,5 @@
+local util = VFS.Include("luaui/widgets/mod/util.lua")
+
 local cFramesToWait = 1
 local cConfigFile = "LuaUI/config/my_camera_config.lua"
 
@@ -46,22 +48,11 @@ local function saveConfig(config)
     Spring.Log("my_camera", LOG.INFO, logStr)
 end
 
-local function mouseWorldCoords()
-    local mouseX, mouseY = Spring.GetMouseState()
-    local desc, args = Spring.TraceScreenRay(mouseX, mouseY, true, false, --[[includeSky]] false)
-    if nil == desc then
-        return nil
-    end -- off map
-    local x = args[1]
-    local y = args[2]
-    local z = args[3]
-    return x, y, z
-end
 
 -- Zooming In is different from Zooming out in that we need to
 -- also center the camera on the cursor.
 local function cameraZoomIn(dist, camState)
-    local x, _, z = mouseWorldCoords()
+    local x, _, z = util.MouseWorldCoords()
     if x == nil then
         Spring.Echo("Mouse is off map")
     elseif dist < camState.dist then

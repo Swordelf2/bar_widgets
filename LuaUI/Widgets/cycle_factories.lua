@@ -8,16 +8,18 @@ local spGetTeamUnitsSorted = Spring.GetTeamUnitsSorted
 local spGetMyTeamID = Spring.GetMyTeamID
 local spSelectUnit = Spring.SelectUnit
 local spGetUnitDefID = Spring.GetUnitDefID
+local spGetUnitPosition = Spring.GetUnitPosition
 local spGiveOrderToUnitArray = Spring.GiveOrderToUnitArray
 local spGetCommandQueue = Spring.GetCommandQueue
 
 local isBuilder = {}
 
 local defIDPriority = {}
-local myFactoryIDs = {}
-local myFactoryPriorities = {}
+-- Elements are { id = number, priority = number, pos = { x = num, z = num } }
+local myFactories = {}
 local curCycleIdx = nil
 local ignoreNextSelectionChanged = false
+local myTeamID = spGetMyTeamID()
 
 function widget:GetInfo()
     return {
@@ -33,38 +35,46 @@ function widget:GetInfo()
 end
 
 local function addFactory(unitID, unitDefID, unitTeam)
-    if unitTeam ~= spGetMyTeamID() then
+    if unitTeam ~= myTeamID then
         return
     end
+    
+    -- This also checks if this is a factory
     local newPriority = defIDPriority[unitDefID]
     if newPriority == nil then
         return
     end
 
     local insertIdx = nil
-    for idx, priority in ipairs(myFactoryPriorities) do
-        if newPriority < priority then
+    for idx, factory in ipairs(myFactories) do
+        if newPriority < factory.priority then
             insertIdx = idx
             break
         end
     end
     if insertIdx == nil then
-        insertIdx = #myFactoryPriorities + 1
+        insertIdx = #myFactories + 1
     end
-    table.insert(myFactoryPriorities, insertIdx, newPriority)
-    table.insert(myFactoryIDs, insertIdx, unitID)
+
+    local posX, _, posZ = spGetUnitPosition(unitID)
+    local newFactory = {
+        id = unitID,
+        priority = newPriority,
+        pos = { x = posX, z = posZ },
+    }
+
+    table.insert(myFactories, insertIdx, newFactory)
 end
 
 local function removeFactory(unitID)
     local removeIdx = nil
-    for idx, factoryID in ipairs(myFactoryIDs) do
-        if factoryID == unitID then
+    for idx, factory in ipairs(myFactories) do
+        if factory.id == unitID then
             removeIdx = idx
         end
     end
     if removeIdx ~= nil then
-        table.remove(myFactoryPriorities, removeIdx)
-        table.remove(myFactoryIDs, removeIdx)
+        table.remove(myFactories, removeIdx)
     end
 end
 
@@ -93,22 +103,20 @@ function widget:SelectionChanged(sel)
 end
 
 local function cycleFactoriesAction()
-    if #myFactoryIDs == 0 then
+    if #myFactories == 0 then
         return
     end
     if curCycleIdx == nil or curCycleIdx == 1 then
-        curCycleIdx = #myFactoryIDs
+        curCycleIdx = #myFactories
     else
         curCycleIdx = curCycleIdx - 1
     end
     ignoreNextSelectionChanged = true
-    spSelectUnit(myFactoryIDs[curCycleIdx])
+    spSelectUnit(myFactories[curCycleIdx].id)
 end
 
 local function initializeMyFactories()
-    myFactoryIDs = {}
-    myFactoryPriorities = {}
-    local myTeamID = spGetMyTeamID()
+    myFactories = {}
     local myUnits = Spring.GetTeamUnits(myTeamID)
     for _, unitID in ipairs(myUnits) do
         local unitDefID = spGetUnitDefID(unitID)
@@ -157,11 +165,20 @@ local function initializeUnitDefPriorities()
 end
 
 local function getMainFactory()
-    if #myFactoryIDs == 0 then
+    if #myFactories == 0 then
         return nil
     else
-        return myFactoryIDs[#myFactoryIDs]
+        return myFactories[#myFactories]
     end
+end
+
+local function issueGuardFactory(units, factoryID)
+    for _, unitID in ipairs(units) do
+        util.RemoveCommand(unitID, function(cmd)
+            return cmd.id == CMD.GUARD
+        end)
+    end
+    spGiveOrderToUnitArray(units, CMD.GUARD, {factoryID}, cCmdGuardOpts)
 end
 
 local function issueGuardMainFactory(units)
@@ -172,17 +189,53 @@ local function issueGuardMainFactory(units)
     if units == nil then
         return
     end
-    for _, unitID in ipairs(units) do
-        util.RemoveCommand(unitID, function(cmd)
-            return cmd.id == CMD.GUARD
-        end)
-    end
-    spGiveOrderToUnitArray(units, CMD.GUARD, {mainFactory}, cCmdGuardOpts)
+    issueGuardFactory(units, mainFactory.id)
 end
 
-local function guardMainFactoryAction()
+local function distSqr(pos1, pos2)
+    local x_diff = pos1.x - pos2.x
+    local z_diff = pos1.z - pos2.z
+    return x_diff * x_diff + z_diff * z_diff
+end
+
+-- pos is { x = number, z = number }
+local function findClosestFactoryTo(pos)
+    if #myFactories == 0 then
+        return nil
+    end
+    local minIdx = nil 
+    local minDistSqr = nil
+    for idx, factory in ipairs(myFactories) do
+        local dSqr = distSqr(pos, factory.pos) 
+        if minIdx == nil or dSqr < minDistSqr then
+            minIdx = idx 
+            minDistSqr = dSqr
+        end
+    end
+    return myFactories[minIdx]
+end
+
+local function guardClosestFactoryAction()
     local units = spGetSelectedUnits()
-    issueGuardMainFactory(units)
+    if units == nil or #units == 0 then
+        return
+    end
+    
+    local pivotPosX, _, pivotPosZ = util.MouseWorldCoords()
+    -- fallback if mouse if offmap: use position of a random unit
+    if pivotPosX == nil then
+        for _, unitID in ipairs(units) do
+            pivotPosX, _, pivotPosZ = spGetUnitPosition(unitID)
+            break
+        end
+    end
+    local pivotPos = { x = pivotPosX, z = pivotPosZ }
+
+    local closestFactory = findClosestFactoryTo(pivotPos) 
+    if closestFactory == nil then
+        return
+    end
+    issueGuardFactory(units, closestFactory.id)
 end
 
 -- Check if `unitID` has a guard order onto on of the units in `unitsMap`.
@@ -208,7 +261,7 @@ local function releaseGuardsAction()
 
     local guardingUnits = {}
 
-    local allUnits = Spring.GetTeamUnits(spGetMyTeamID())
+    local allUnits = Spring.GetTeamUnits(myTeamID)
     for _, unit in ipairs(allUnits) do
         if isBuilder[spGetUnitDefID(unit)] then
             if isGuarding(unit, selectedUnitsMap) then
@@ -221,6 +274,7 @@ local function releaseGuardsAction()
 end
 
 function widget:Initialize()
+    myTeamID = spGetMyTeamID()
     local nameToPriority = initializeUnitDefPriorities()
 
     for unitDefID, unitDef in pairs(UnitDefs) do
@@ -236,6 +290,9 @@ function widget:Initialize()
     initializeMyFactories()
 
     widgetHandler:AddAction("cycle_factories", cycleFactoriesAction, nil, "p")
-    widgetHandler:AddAction("guard_main_factory", guardMainFactoryAction, nil, "p")
+    -- Issues a shift guard command on my factory closest to mouse cursor 
+    widgetHandler:AddAction("guard_closest_factory", guardClosestFactoryAction, nil, "p")
+    
+    -- Unused
     widgetHandler:AddAction("release_guards", releaseGuardsAction, nil, "p")
 end
