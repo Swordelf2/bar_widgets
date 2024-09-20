@@ -1,14 +1,41 @@
 # Stack
 
+Do rebinds separately together (GROUP THEM)
+
 Guard closest factory
+Panic button - D Gun is panic button already?
+
+Update top bar widget
+Spectator widget
+rebind fight/repair
+Use Fight+left click (from tips below)
+Space clears Guard command
+Always use space - maybe alt command
+Check that Shift+Space commands also don't remove Guard and Alt commands
+Shift+P
+Select nearby repairers with Alt+i instead
+Rebind I to select repairers
+Make Alt+repair and Alt+reclaim more comfy
+Check that Alt+repair on base does not make cons constantly switch and walk
+Use Alt repair and stuff more
+How to select nearby BP properly
+Camera for frontline?
+ 
+remap Cycle factories to smth more comfy with `,` and `m`
+
+Check out tips and tricks in Discord
+
 How to queue units in factory properly
 Shift+P Adds units
 Selection way
+
+Hound Gauss is single press
 
 Drop Alt commands like Guard commands if issued a shift command
 Maneuver/Roam
 Remove player menu
 add cor units to cgs
+
 
 # INSTALL GUIDE
 

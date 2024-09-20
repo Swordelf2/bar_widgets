@@ -187,9 +187,6 @@ end
 
 -- Check if `unitID` has a guard order onto on of the units in `unitsMap`.
 local function isGuarding(unitID, unitsMap)
-    if unitID == 4866 then
-        Spring.Echo("here")
-    end
     local commandQueue = spGetCommandQueue(unitID, -1)
     if commandQueue == nil or #commandQueue == 0 then
         return false
